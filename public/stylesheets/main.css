@@ -1,0 +1,23 @@
+#wrapper{
+	margin-top:51px;
+	height:100%;
+	width:100%;
+	background:#dddddd;
+	position:absolute;
+}
+#sidebar{
+	background:#eeeeee;
+	height:100%;
+	width:300px;
+	display:none;
+}
+#rowing{
+	height:100%;
+}
+#container{
+	height:100%;
+	width:100%;
+}
+#map{
+	height:100%;
+}

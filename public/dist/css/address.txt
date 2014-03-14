@@ -1,0 +1,32 @@
+<div id="column-part">
+   	
+   	<div  id="mapTypes" class="search"> 
+   	   	<strong>Base Map Type</strong>
+
+<select id="baseMapTypes" name="BASEMAP" onchange="switchBaseMap()">
+<option value="SATELLITE">Satellite</option>
+<option value="TERRAIN">Terrain</option>
+<option value="ROADMAP">Road Map</option>
+</select>
+
+
+
+   	</div>
+   	
+   	<div class="search" id ="searchBar">
+   	<strong>Address Search</strong>
+   	<input type="text" id="address" placeholder="address"/>
+	   	<button id="addressSearchButton" type="button">search</button>
+   	</div>
+   	
+   	<div class="search" id="nameSearch">
+   	   	<strong>Parcel Owner Search</strong>
+   		<input type="text" id="firstName" placeholder="First Name"/>
+   		<input type="text" id="lastName" placeholder="Last Name"/>
+   		
+	   	<button id="nameSearchButton" type="button">search</button>
+   	</div>
+   	
+    </div>
+    </div>
+        

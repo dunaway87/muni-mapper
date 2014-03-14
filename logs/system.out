@@ -1,0 +1,6 @@
+CompilerOracle: exclude jregex/Pretokenizer.next
+Listening for transport dt_socket at address: 8000
+22:24:47,852 INFO  ~ Starting C:\projects\muni-mapper
+22:24:50,339 WARN  ~ You're running Play! in DEV mode
+22:24:50,925 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+22:24:55,368 INFO  ~ Application 'muni-mapper' is now started !

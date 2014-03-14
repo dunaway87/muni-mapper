@@ -1,6 +1,132 @@
-CompilerOracle: exclude jregex/Pretokenizer.next
 Listening for transport dt_socket at address: 8000
-22:24:47,852 INFO  ~ Starting C:\projects\muni-mapper
-22:24:50,339 WARN  ~ You're running Play! in DEV mode
-22:24:50,925 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
-22:24:55,368 INFO  ~ Application 'muni-mapper' is now started !
+23:31:37,245 INFO  ~ Starting C:\projects\muni-mapper
+23:31:37,862 WARN  ~ You're running Play! in DEV mode
+23:31:37,968 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+23:33:12,164 INFO  ~ Application 'muni-mapper' is now started !
+23:33:13,412 ERROR ~ 
+
+@6hh28dof2
+Internal Server Error (500) for request GET /getLayers
+
+Execution exception (In /app/utils/DatabaseConnection.java around line 12)
+PSQLException occured : FATAL: password authentication failed for user "dunawayjenckes"
+
+play.exceptions.JavaExecutionException: FATAL: password authentication failed for user "dunawayjenckes"
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:231)
+	at Invocation.HTTP Request(Play!)
+Caused by: org.postgresql.util.PSQLException: FATAL: password authentication failed for user "dunawayjenckes"
+	at org.postgresql.core.v3.ConnectionFactoryImpl.doAuthentication(ConnectionFactoryImpl.java:291)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:108)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:66)
+	at org.postgresql.jdbc2.AbstractJdbc2Connection.<init>(AbstractJdbc2Connection.java:125)
+	at org.postgresql.jdbc3.AbstractJdbc3Connection.<init>(AbstractJdbc3Connection.java:30)
+	at org.postgresql.jdbc3.Jdbc3Connection.<init>(Jdbc3Connection.java:24)
+	at org.postgresql.Driver.makeConnection(Driver.java:393)
+	at org.postgresql.Driver.connect(Driver.java:267)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at utils.DatabaseConnection.getConnection(DatabaseConnection.java:12)
+	at geoserver.Layers.getJson(Layers.java:74)
+	at geoserver.Layers.getLayers(Layers.java:46)
+	at controllers.Application.getLayers(Application.java:18)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:548)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:502)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:478)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:473)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:161)
+	... 1 more
+23:33:46,203 ERROR ~ 
+
+@6hh28dof3
+Internal Server Error (500) for request GET /getLayers
+
+Execution exception (In /app/utils/DatabaseConnection.java around line 12)
+PSQLException occured : FATAL: password authentication failed for user "dunawayjenckes"
+
+play.exceptions.JavaExecutionException: FATAL: password authentication failed for user "dunawayjenckes"
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:231)
+	at Invocation.HTTP Request(Play!)
+Caused by: org.postgresql.util.PSQLException: FATAL: password authentication failed for user "dunawayjenckes"
+	at org.postgresql.core.v3.ConnectionFactoryImpl.doAuthentication(ConnectionFactoryImpl.java:291)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:108)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:66)
+	at org.postgresql.jdbc2.AbstractJdbc2Connection.<init>(AbstractJdbc2Connection.java:125)
+	at org.postgresql.jdbc3.AbstractJdbc3Connection.<init>(AbstractJdbc3Connection.java:30)
+	at org.postgresql.jdbc3.Jdbc3Connection.<init>(Jdbc3Connection.java:24)
+	at org.postgresql.Driver.makeConnection(Driver.java:393)
+	at org.postgresql.Driver.connect(Driver.java:267)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at utils.DatabaseConnection.getConnection(DatabaseConnection.java:12)
+	at geoserver.Layers.getJson(Layers.java:74)
+	at geoserver.Layers.getLayers(Layers.java:46)
+	at controllers.Application.getLayers(Application.java:19)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:548)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:502)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:478)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:473)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:161)
+	... 1 more
+23:33:56,088 ERROR ~ 
+
+@6hh28dof4
+Internal Server Error (500) for request GET /getLayers
+
+Execution exception (In /app/utils/DatabaseConnection.java around line 12)
+PSQLException occured : FATAL: password authentication failed for user "dunawayjenckes"
+
+play.exceptions.JavaExecutionException: FATAL: password authentication failed for user "dunawayjenckes"
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:231)
+	at Invocation.HTTP Request(Play!)
+Caused by: org.postgresql.util.PSQLException: FATAL: password authentication failed for user "dunawayjenckes"
+	at org.postgresql.core.v3.ConnectionFactoryImpl.doAuthentication(ConnectionFactoryImpl.java:291)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:108)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:66)
+	at org.postgresql.jdbc2.AbstractJdbc2Connection.<init>(AbstractJdbc2Connection.java:125)
+	at org.postgresql.jdbc3.AbstractJdbc3Connection.<init>(AbstractJdbc3Connection.java:30)
+	at org.postgresql.jdbc3.Jdbc3Connection.<init>(Jdbc3Connection.java:24)
+	at org.postgresql.Driver.makeConnection(Driver.java:393)
+	at org.postgresql.Driver.connect(Driver.java:267)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at utils.DatabaseConnection.getConnection(DatabaseConnection.java:12)
+	at geoserver.Layers.getJson(Layers.java:74)
+	at geoserver.Layers.getLayers(Layers.java:46)
+	at controllers.Application.getLayers(Application.java:19)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:548)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:502)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:478)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:473)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:161)
+	... 1 more
+23:34:20,658 INFO  ~ Loading from REST path /rest/layers.xml
+23:34:21,551 INFO  ~ Chugach_National_Forest
+23:34:21,553 INFO  ~ Marine
+23:34:21,553 INFO  ~ Trails
+23:34:21,553 INFO  ~ Roads
+23:34:21,553 INFO  ~ House_Districts
+23:34:21,553 INFO  ~ Addresses
+23:34:21,553 INFO  ~ Wetlands
+23:34:21,553 INFO  ~ Geology
+23:34:21,553 INFO  ~ Zip_Code
+23:34:21,553 INFO  ~ Assembly_Districts
+23:34:21,553 INFO  ~ Subdivisions
+23:34:21,553 INFO  ~ Community_Borders
+23:34:21,553 INFO  ~ fire_departments
+23:34:21,553 INFO  ~ Zoning
+23:34:21,553 INFO  ~ Seismic
+23:34:21,553 INFO  ~ Streams
+23:34:21,554 INFO  ~ Census_Block_Groups
+23:34:21,554 INFO  ~ Municipal_Parks
+23:34:21,554 INFO  ~ Senate_Districts
+23:34:21,554 INFO  ~ Parcels
+23:34:21,554 INFO  ~ Municipal_Boundary
+23:34:21,554 INFO  ~ Lakes
+23:34:21,554 INFO  ~ Avalanche_Zone
+23:34:21,554 INFO  ~ Railroad
+23:34:21,554 INFO  ~ Chugach_State_Park
+23:34:21,554 INFO  ~ Community_Councils
+23:34:21,554 INFO  ~ Military
+23:34:21,554 INFO  ~ all_buildings
+23:34:21,554 INFO  ~ ["Chugach_National_Forest","Marine","Trails","Roads","House_Districts","Addresses","Wetlands","Geology","Zip_Code","Assembly_Districts","Subdivisions","Community_Borders","fire_departments","Zoning","Seismic","Streams","Census_Block_Groups","Municipal_Parks","Senate_Districts","Parcels","Municipal_Boundary","Lakes","Avalanche_Zone","Railroad","Chugach_State_Park","Community_Councils","Military","all_buildings"]
+23:34:21,554 INFO  ~ Chugach_National_Forest*Marine*Trails*Roads*House_Districts*Addresses*Wetlands*Geology*Zip_Code*Assembly_Districts*Subdivisions*Community_Borders*fire_departments*Zoning*Seismic*Streams*Census_Block_Groups*Municipal_Parks*Senate_Districts*Parcels*Municipal_Boundary*Lakes*Avalanche_Zone*Railroad*Chugach_State_Park*Community_Councils*Military*all_buildings

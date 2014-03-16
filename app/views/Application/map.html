@@ -14,11 +14,40 @@
     <script src="/public/javascripts/muni-mapper.js" type="text/javascript"></script>
 
  <script type="text/javascript">
+
+
 $(document).ready(function (){
 	loadMap();
-	$('#layersTab').click(function(){
-		$('#sidebar').toggle();
-	});
+	
+
+	  
+	  
+	  
+	  
+
+$.get("/getLayers").done(function(dataSTR){
+	var data = jQuery.parseJSON(dataSTR);
+ 	console.log(data);
+	var folderHtml ='';
+ 	for (var key in data) {
+ 		var folderName =key.replace(' ', '')+'Folder';
+ 			console.log(folderName);
+ 			folderHtml = folderHtml+'<li style="cursor:pointer" class="list-group-item" onClick="$(\'#'+folderName+'\').toggle()">'+key+'</li><ul class="list-group" id="'+folderName+'" style="display:none; cursor:pointer">';
+ 			
+ 				
+	 	  
+	 	   var obj = data[key];
+ 	    for (var prop in obj) { 
+			folderHtml = folderHtml+'<li id="'+obj[prop]+'"class="list-group-item" style = "margin-left:40px; cursor:pointer" onClick="manageLayer(\''+obj[prop]+'\')">'+obj[prop].replace(/_/g,' ')+'</li>';
+ 	      } 
+ 	    folderHtml = folderHtml+'</ul></li>';
+ 	   } 
+ 	
+ 	console.log(folderHtml);
+ 	$('#folderList').append(folderHtml);
+ });
+
+
 });
 </script>
 
@@ -65,12 +94,10 @@ $(document).ready(function (){
 <div id ="container" class="container-fluid">
   <div id="rowing" class="row">
     <div id = "sidebar"  class="col-sm-3 col-md-2 sidebar">
-        <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">Overview</a></li>
-            <li><a href="#">Reports</a></li>
-            <li><a href="#">Analytics</a></li>
-            <li><a href="#">Export</a></li>
-          </ul>
+   <ul class="list-group" id="folderList">
+
+
+	</ul>
          
     </div>
     <div id= "map">
@@ -83,6 +110,9 @@ $(document).ready(function (){
 </div>
 
 
+<script type="text/javascript">
 
+
+</script>
 </body>
 </html>

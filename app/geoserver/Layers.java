@@ -45,7 +45,7 @@ public class Layers {
 	public static JsonObject getLayers() throws SQLException{
 		JsonObject layers = getJson();
 		JsonObject html = getHTML(layers);
-		return html;
+		return layers;
 	}
 	private static JsonObject getHTML(JsonObject obj){
 		Set<Entry<String, JsonElement>> entrySet = obj.entrySet();

@@ -9,7 +9,7 @@
 	background:#eeeeee;
 	height:100%;
 	width:300px;
-	display:none;
+	
 }
 #rowing{
 	height:100%;
@@ -20,4 +20,10 @@
 }
 #map{
 	height:100%;
+}
+
+ .clicked{
+       background-color:#000000;
+       border-style:outset;
+       border-color:#707373;
 }

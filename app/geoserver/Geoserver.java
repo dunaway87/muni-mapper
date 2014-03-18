@@ -15,10 +15,19 @@ public class Geoserver {
 	public static JsonObject getAllLayers(int epsg, String bbox, int x, int y, int height, int width, String[] layers, boolean getGeom){
 		JsonArray geometries = new JsonArray();
 		JsonArray array = new JsonArray();
+		JsonArray charts = new JsonArray();
 		for(int i =0; i<layers.length; i++){
 			JsonObject obj =getLayerInfo(epsg, bbox, x, y, height, width, layers[i], getGeom);
 			if(!(obj == null)){
+				if(obj.has("piechart")){
+					JsonObject piechart = new JsonObject();
+					piechart.addProperty("type", "pie");
+					piechart.add("data", obj.get("piechart"));
+					charts.add(piechart);
+				}
+				Logger.info("obj without piehcart %s", obj);
 				geometries.add(obj.get("geometry"));
+				obj.get("properties").getAsJsonObject().remove("piechart");
 				obj.remove("geometry");
 				array.add(obj);
 			}
@@ -26,6 +35,7 @@ public class Geoserver {
 		JsonObject arrayWithGeom = new JsonObject();
 		arrayWithGeom.add("array", array);
 		arrayWithGeom.add("geometries", geometries);
+		arrayWithGeom.add("charts", charts);
 		return arrayWithGeom;
 	}
 	
@@ -59,7 +69,9 @@ public class Geoserver {
 		toReturn.addProperty("layer",layer);
 		toReturn.add("properties", properties);
 		toReturn.add("geometry", features.get(0).getAsJsonObject().get("geometry").getAsJsonObject());
-		
+		if(properties.has("piechart")){
+			toReturn.add("piechart", properties.get("piechart"));
+		}
 		Logger.error("%s", features);
 		
 		

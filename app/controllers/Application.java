@@ -2,11 +2,16 @@ package controllers;
 
 import play.*;
 import play.mvc.*;
+import geoserver.Geoserver;
 import geoserver.Layers;
+import html.JsonToHtml;
 
 import java.net.MalformedURLException;
 import java.sql.SQLException;
 import java.util.*;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 import models.*;
 
@@ -24,4 +29,29 @@ public class Application extends Controller {
 		Logger.info(layers.toString());
 		renderText(layers);
 	}
+
+	public static void onClick(int epsg, String bbox, int x, int y, int height, int width, String layers, boolean getGeom){
+		bbox = fixBBox(bbox);
+		Logger.info("bbox %s", bbox);
+		JsonObject arrayWithGeom = Geoserver.getAllLayers(epsg, bbox, x, y, height, width, layers.split(","), getGeom);
+		JsonArray array = arrayWithGeom.get("array").getAsJsonArray();
+		JsonArray geometries = arrayWithGeom.get("geometries").getAsJsonArray();
+		
+		String html = JsonToHtml.buildIt(array);
+		
+		JsonObject toReturn = new JsonObject();
+		toReturn.add("geometries", geometries);
+		toReturn.addProperty("html", html);
+		toReturn.add("charts", arrayWithGeom.get("charts"));
+		renderText(toReturn);
+	}
+
+	
+	
+	private static String fixBBox(String bbox) {
+		String[] points = bbox.split(",");
+		bbox = points[1]+","+points[0]+","+points[3]+","+points[2];
+		return bbox;
+	}
+	
 }

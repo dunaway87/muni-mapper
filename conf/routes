@@ -8,6 +8,8 @@ GET     /                                       Application.map
 GET		/getLayers								Application.getLayers
 
 GET		/getLayersGeoserver						Application.getLayersGeoserver
+
+GET		/onClick								Application.onClick
 # Ignore favicon requests
 GET     /favicon.ico                            404
 # Map static resources from the /app/public folder to the /public path

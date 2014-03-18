@@ -18,6 +18,9 @@ function addBaseMap(mapboxID){
 var layers = new Array();
 
 function manageLayer(layername){
+	removeGeoJson();
+	removePopup();
+	
 	 console.log(layername);
 		var hasLayer = false;
 		for(var i =0; i < layers.length; i++){

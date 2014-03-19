@@ -48,11 +48,14 @@ function addPopUp(bbox, epsg, x, y, width, height, latlng){
 				}
 				if (typeof(result.charts) !== 'undefined'){
 					for(var i=0;i<result.charts.length;i++){
+						var data = result.charts[i].data
 						if(result.charts[i].type=="pie"){
-							var data = result.charts[i].data
-							
 							makePieChart(JSON.parse(data));
 						}
+						if(result.charts[i].type=="chart"){
+							makeBarChart(JSON.parse(data));
+						}
+						
 					}
 				}
 				

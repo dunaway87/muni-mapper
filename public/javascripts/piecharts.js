@@ -35,11 +35,20 @@
                 .attr("d", arc);                                    //this creates the actual SVG path using the associated data (pie) with the arc drawing function
  
         arcs.append("svg:text")                                     //add a label to each slice
-                .attr("transform", function(d) {                    //set the label's origin to the center of the arc
-                //we have to make sure to set these before calling arc.centroid
+                .attr("transform", function(d) {  //set the label's origin to the center of the arc
+                console.log(d);
+                	
+                	//we have to make sure to set these before calling arc.centroid
                 d.innerRadius = 0;
                 d.outerRadius = r;
-                return "translate(" + arc.centroid(d) + ")";        //this gives us a pair of coordinates like [50, 50]
+                
+                var labelPlacement = new Array();
+                labelPlacement.push(2*arc.centroid(d)[0]);
+                labelPlacement.push(2*arc.centroid(d)[1]);
+                console.log(labelPlacement);
+                
+                return "translate(" + labelPlacement + ")";        //this gives us a pair of coordinates like [50, 50]
+                // return "translate(" + arc.centroid(d) + ")";        //this gives us a pair of coordinates like [50, 50]
             })
             .attr("text-anchor", "middle")                          //center the text on it's origin
             .text(function(d, i) { return data[i].label; });        //get the label from our original data array

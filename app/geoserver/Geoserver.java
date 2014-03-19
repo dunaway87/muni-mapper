@@ -25,8 +25,14 @@ public class Geoserver {
 					piechart.add("data", obj.get("piechart"));
 					charts.add(piechart);
 				}
+				if(obj.has("barchart")){
+					JsonObject barchart = new JsonObject();
+					barchart.addProperty("type", "bar");
+					barchart.add("data", obj.get("piechart"));
+				}
 				Logger.info("obj without piehcart %s", obj);
 				geometries.add(obj.get("geometry"));
+				obj.get("properties").getAsJsonObject().remove("barchart");
 				obj.get("properties").getAsJsonObject().remove("piechart");
 				obj.remove("geometry");
 				array.add(obj);

@@ -26,9 +26,11 @@ public class Geoserver {
 					charts.add(piechart);
 				}
 				if(obj.has("barchart")){
+					Logger.error("ha");
 					JsonObject barchart = new JsonObject();
 					barchart.addProperty("type", "bar");
-					barchart.add("data", obj.get("piechart"));
+					barchart.add("data", obj.get("barchart"));
+					charts.add(barchart);
 				}
 				Logger.info("obj without piehcart %s", obj);
 				geometries.add(obj.get("geometry"));
@@ -78,9 +80,9 @@ public class Geoserver {
 		if(properties.has("piechart")){
 			toReturn.add("piechart", properties.get("piechart"));
 		}
-		Logger.error("%s", features);
-		
-		
+		if(properties.has("barchart")){
+			toReturn.add("barchart", properties.get("barchart"));
+		}	
 		
 		return toReturn;
 	}

@@ -52,7 +52,7 @@ function addPopUp(bbox, epsg, x, y, width, height, latlng){
 						if(result.charts[i].type=="pie"){
 							makePieChart(JSON.parse(data));
 						}
-						if(result.charts[i].type=="chart"){
+						if(result.charts[i].type=="bar"){
 							makeBarChart(JSON.parse(data));
 						}
 						

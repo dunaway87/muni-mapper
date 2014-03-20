@@ -16,6 +16,7 @@ import com.google.gson.JsonObject;
 
 public class Application extends Controller {
 
+	
     public static void map() {
         render();
     }

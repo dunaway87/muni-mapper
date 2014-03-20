@@ -1,25 +1,39 @@
+
+
+body.mapFullPage{
+	overflow:hidden;
+}
+
 #wrapper{
 	margin-top:51px;
 	height:100%;
 	width:100%;
 	background:#dddddd;
 	position:absolute;
-}
-#sidebar{
-	background:#eeeeee;
+	
+	}
+#layerGroupContainer{
+	position:absolute;
 	height:100%;
-	width:300px;
+	width:275px;
+	right:18px;
+	
+	
 	
 }
 #rowing{
 	height:100%;
 }
 #container{
+	margin: 0 auto;
 	height:100%;
 	width:100%;
+	
 }
 #map{
-	height:100%;
+	height:calc(100% - 50px);
+	width:calc(100% + 30px);
+	margin-left:-15px;
 }
 
  .clicked{
@@ -28,5 +42,29 @@
        border-color:#707373;
 }
 .list-group-item{
-	box-shadow: 10px 10px 5px #888888;
+	opacity:.8;
+	z-index:4;
+	
 }
+
+.searchContainer{
+	position:absolute;
+	bottom:10px;
+	height:250px;
+	width:300px;
+	z-index:4;
+	left:20px;
+	background:#eeeeee;
+	opacity:.9;
+	display:none;
+	border-radius:5px;
+	t
+
+
+}
+
+
+
+
+
+

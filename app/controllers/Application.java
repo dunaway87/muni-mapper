@@ -2,6 +2,7 @@ package controllers;
 
 import play.*;
 import play.mvc.*;
+import searches.Address;
 import geoserver.Geoserver;
 import geoserver.Layers;
 import html.JsonToHtml;
@@ -46,7 +47,13 @@ public class Application extends Controller {
 		renderText(toReturn);
 	}
 
-	
+	public static void addressSearch(String address) throws SQLException{
+		if(address.equals("") || address == null){
+			renderJSON("");
+		}
+		address = address.toLowerCase();
+		renderJSON(Address.search(address.replace("road", "rd").replace("lp", "loop").replace("drive", "dr").replace("highway", "HWY").replace("circle", "cir").replace("avenue", "ave").replace("boulevard", "blvd")).toString());
+	}
 	
 	private static String fixBBox(String bbox) {
 		String[] points = bbox.split(",");

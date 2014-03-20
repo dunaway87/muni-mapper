@@ -2,6 +2,8 @@ var map;
 function loadMap(){
 map = new L.Map('map', {center: new L.LatLng(61.15, -149.9), zoom: 11});
 addBaseMap('dunaway87.hffcoej7');
+$("#sataliteListItem").addClass("baseMapItemClicked");
+
 }
 var basemap;
 function addBaseMap(mapboxID){
@@ -11,7 +13,8 @@ function addBaseMap(mapboxID){
 		basemap = L.tileLayer('http://{s}.tiles.mapbox.com/v3/'+mapboxID+'/{z}/{x}/{y}.png', {
 	    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 	});
-	map.addLayer(basemap);
+	map.addLayer(basemap, true);
+	basemap.bringToBack();
 }
 
 
@@ -66,7 +69,6 @@ function manageLayer(layername){
 		 	map.addLayer(layer);
 		 	return layer;
 };
-
 
 
 

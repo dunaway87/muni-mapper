@@ -32,8 +32,10 @@ public class Geoserver {
 					barchart.add("data", obj.get("barchart"));
 					charts.add(barchart);
 				}
+				
 				Logger.info("obj without piehcart %s", obj);
 				geometries.add(obj.get("geometry"));
+				obj.get("properties").getAsJsonObject().remove("style");
 				obj.get("properties").getAsJsonObject().remove("barchart");
 				obj.get("properties").getAsJsonObject().remove("piechart");
 				obj.remove("geometry");

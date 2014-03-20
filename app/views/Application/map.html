@@ -23,35 +23,9 @@
 
 $(document).ready(function (){
 
-$('#layersTab').click(function(){
-	$('#layerGroupContainer').toggle();
-});
-$('#searchTab').click(function(){
-	$('.searchContainer').toggle();
-});
-
-var addresses;
 
 
-$('#addressSearchButton').click(function(){
-		console.log(addresses);
-	 	var addressName = $('#address').val();
-	 	console.log(addressName);
-	 	for(var i = 0; i < addresses.length; i ++){
-	 		
- 			console.log('typed addess');
- 			console.log(addressName);
- 			console.log('address option');
- 			console.log(addresses[i].address);
-	 		
-	 		if(addresses[i].address == addressName){
-
-	 			changeAddress(addresses[i]);
-	 		}
-	 	}
-	
-	
-});
+	  
 	  
 	  
 	  
@@ -63,7 +37,7 @@ $.get("/getLayers").done(function(dataSTR){
  	for (var key in data) {
  		var folderName =key.replace(' ', '')+'Folder';
  			console.log(folderName);
- 			folderHtml = folderHtml+'<li style="cursor:pointer" class="list-group-item"  onClick="$(\'#'+folderName+'\').toggle()">'+key+'</li><ul class="list-group" id="'+folderName+'"style="display:none; cursor:pointer">';
+ 			folderHtml = folderHtml+'<li style="cursor:pointer" class="list-group-item" onClick="$(\'#'+folderName+'\').toggle()">'+key+'</li><ul class="list-group" id="'+folderName+'" style="display:none; cursor:pointer">';
  			
  				
 	 	  
@@ -76,6 +50,42 @@ $.get("/getLayers").done(function(dataSTR){
  	
  	console.log(folderHtml);
  	$('#folderList').append(folderHtml);
+	
+	
+$("#settingsTab").click(function(){
+	$("#settingsList").slideToggle('fast');
+	console.log($("#settingsTab").css( "background-color" ));
+	if($("#settingsTab").css( "background-color" ) == "rgba(0, 0, 0, 0)" || $("#settingsTab").css( "background-color" ) == "rgb(16, 16, 16)"){
+		$("#settingsTab").css("background-color", "#999");
+		$("#settingsTab").css("color", "#101010");
+	} else {
+		$("#settingsTab").css("background-color", "#101010");
+		$("#settingsTab").css("color", "#999");
+	}
+});
+
+
+	$("#sataliteListItem").click(function(){
+		$("#sataliteListItem").addClass("baseMapItemClicked");
+		$("#terrainListItem").removeClass("baseMapItemClicked");
+		addBaseMap('dunaway87.hffcoej7');
+	});
+	$("#terrainListItem").click(function(){
+		$("#terrainListItem").addClass("baseMapItemClicked");
+		$("#sataliteListItem").removeClass("baseMapItemClicked");
+		addBaseMap('dunaway87.hff94j6p');
+	});
+	
+	$("#clearAllLayersListItem").click(function(){
+		console.log(layers);
+		var length = layers.length;
+		for(var i=0; i < length; i++){
+			console.log(layers[0].layer);
+			manageLayer(layers[0].layerName);
+		}
+		layers = new Array();
+	});
+	
  });
 
 
@@ -84,7 +94,7 @@ $.get("/getLayers").done(function(dataSTR){
 
 
 </head>
-<body class = "mapFullPage">
+
 <header>
 	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container-fluid">
@@ -111,49 +121,59 @@ $.get("/getLayers").done(function(dataSTR){
            </a>
       	 </li>
             <li class ="divider"></li>
-            <li><a href="#" id="settingsTab">
+            <li><a id="settingsTab">
            		 <span id ="settingsTabLabel">Settings</span>
-            	 <span class="glyphicon glyphicon-cog"></span></a></li>
+            	 <span class="glyphicon glyphicon-cog"></span></a>
+            </li>
+           	 
+            	
            <li class ="divider"></li>
           </ul>
         </div>
       </div>
     </div>
 </header>
+<body>
+<div id="settingsList">
 
+
+
+<ul class="nav nav-list">
+  <li class="active" id="baseMapList">
+ 	<a href="#"> Base Map</a>
+ 	<li id="sataliteListItem" class="baseMapListItem">Satalite</li>
+ 	<li id="terrainListItem" class="baseMapListItem">Terrain</li>
+ 		
+ </li>
+  <li id="clearAllLayersListItem"><a href="#"> Clear All Layers</a></li>
+
+</ul>
+
+</div>
 <div id ="wrapper">
 <div id ="container" class="container-fluid">
- 
-    <div id = "layerGroupContainer">  
+  <div id = "layerGroupContainer">
    <ul class="list-group" id="folderList">
+
+
 	</ul>
-   </div>      
-  
+         
+    </div>
     <div id= "map">
         <script type='text/javascript'>
        loadMap();
         </script>
     </div>
-   
+    </div>
   </div>
   
-  <div class = "searchContainer" id = "searchResults">
-   	</div>
-   	<div class="searchContainer" id ="searchBar">
- <form role="form">
- <div class="form-group">
-   	<label for="addressSearch"> Search Address</label>
-   	<input type="text" class ="form-control" id="address" placeholder="address"/>
-	   	<button id="addressSearchButton" class="btn btn-default">search</button>
-	   
-  </div>
-  </form>
 
-</div>
-</div>
 
         <script src="/public/javascripts/mapClicks.js" type="text/javascript"></script>
 
+<script type="text/javascript">
 
+
+</script>
 </body>
 </html>

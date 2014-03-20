@@ -58,12 +58,43 @@ body.mapFullPage{
 	opacity:.9;
 	display:none;
 	border-radius:5px;
-	t
-
-
+	
 }
 
+#settingsTab{
+	margin-right:20px;
+}
+.divider{
+	padding:15px;
+}
+#settingsList{
+	min-height:100px;
+	width:150px;
+	position:absolute;
+	float:right;
+	background:#eeeeee;
+	z-index:10;
+	position: relative;
+	margin-top:50px;
+	margin-right:18px;
+	box-shadow: 3px 3px 1px #000000;
+	border:2px solid;
+	border-bottom-left-radius:7px;
+	border-bottom-right-radius:7px;
+	display:none;
+	cursor:pointer;
+}
+#sataliteListItem{
+	margin-top:-10px;
+}
 
+.baseMapListItem{
+	padding-left:30px;
+}
+.baseMapItemClicked{
+	       background-color:#cccccc;
+		  color:#999;
+}
 
 
 

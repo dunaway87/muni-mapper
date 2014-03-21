@@ -44,6 +44,7 @@
                  return "translate(" + arc.centroid(d) + ")";        //this gives us a pair of coordinates like [50, 50]
             })
             .attr("text-anchor", "middle")                          //center the text on it's origin
+            .attr("z-index", 100)
             .text(function(d, i) { return data[i].label; });        //get the label from our original data array
     }
  	function getColor(d){

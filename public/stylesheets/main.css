@@ -33,11 +33,7 @@ body.mapFullPage{
 	margin-left:-15px;
 }
 
- .clicked{
-       background-color:#000000;
-       border-style:outset;
-       border-color:#707373;
-}
+
 .list-group-item{
 	opacity:.8;
 	z-index:4;

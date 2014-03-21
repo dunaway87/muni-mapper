@@ -30,7 +30,10 @@ function manageLayer(layername){
 			 if(layers[i].layerName == layername){
 				$("#"+layername).css({
 					"background-color": "#fff",
-					"border": "1px solid #ddd"
+					"border": "1px solid #ddd",
+					"color":"#333333",
+					"font-weight":"normal"
+					
 				});
 				removeLayer(layers[i], i);
 				hasLayer = true;
@@ -42,7 +45,10 @@ function manageLayer(layername){
 			$("#"+layername).css({
 				 "background-color":"#55555f",
 		       "border-style":"outset",
-		       "border-color":"#707373"});
+		       "border-color":"#707373",
+		    	"color":"#000000",
+		    	"font-weight":"bold"
+			});
 			addLayerToArray(layername);
 		}
 	  };

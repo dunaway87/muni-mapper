@@ -20,12 +20,16 @@
     
  <script type="text/javascript">
 
-
+ function folderClick(folderName){
+	 	 $("#"+folderName+"UpArrow").toggle();
+	 	 $("#"+folderName+"DownArrow").toggle();
+	 	$("#"+folderName).toggle()
+ }
 $(document).ready(function (){
 
 
 
-	  
+
 	  
 	  
 	  
@@ -37,7 +41,7 @@ $.get("/getLayers").done(function(dataSTR){
  	for (var key in data) {
  		var folderName =key.replace(' ', '')+'Folder';
  			console.log(folderName);
- 			folderHtml = folderHtml+'<li style="cursor:pointer" class="list-group-item" onClick="$(\'#'+folderName+'\').toggle()">'+key+'</li><ul class="list-group" id="'+folderName+'" style="display:none; cursor:pointer">';
+ 			folderHtml = folderHtml+'<li style="cursor:pointer" class="list-group-item" onClick="folderClick(\''+folderName+'\')">'+key+'<span id="'+folderName+'DownArrow" class="glyphicon glyphicon-chevron-down" style="float:right; display:none"></span><span id="'+folderName+'UpArrow" class="glyphicon glyphicon-chevron-up" style="float:right"></span></li><ul class="list-group" id="'+folderName+'" style="display:none; cursor:pointer">';
  			
  				
 	 	  

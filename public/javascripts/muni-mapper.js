@@ -70,6 +70,7 @@ function manageLayer(layername){
 		 	var layer = L.tileLayer.wms("http://geoblaster.info:8080/geoserver/cite/wms", {
 		    layers: 'cite:'+layerName,
 		    format: 'image/png',
+		    tiled: 'true',
 		    transparent: true,
 		});
 		 	map.addLayer(layer);

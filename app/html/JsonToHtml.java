@@ -41,7 +41,12 @@ public class JsonToHtml {
 
 	}
 	public static String addProperty(String field, String value, String html){
+		if(!field.equals("More_Info")){
 		html = html.concat("<br><tr><td>"+field+": </td><td>"+value+"</td></tr>");
+		} else {
+			html = html.concat("<br><tr><td>"+value+"</td></tr>");
+
+		}
 		return html;
 	}
 }

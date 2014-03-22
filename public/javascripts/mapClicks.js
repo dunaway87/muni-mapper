@@ -36,7 +36,7 @@ function addPopUp(bbox, epsg, x, y, width, height, latlng){
 				console.log(result);
 
 				
-				if(popupHtml != "<div></div>"){
+				if(popupHtml != "<div id='popupDiv'></div>"){
 					var options = {'maxWidth':'500', 'minWidth':'300', 'maxHeight':'600'};
 					popup = L.popup(options);
 				//	popup.setLatLng(latlng).setContent(popupHtml).openOn(map);

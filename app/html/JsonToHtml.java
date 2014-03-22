@@ -24,7 +24,7 @@ public class JsonToHtml {
 			Set<Entry<String, JsonElement>> layersSet = properties.entrySet();
 			Iterator<Entry<String, JsonElement>> iterator = layersSet.iterator();
 			Entry<String, JsonElement> entry;
-			String html = "<fieldset><strong>"+LayerName+"</strong>";
+			String html = "<fieldset><strong>"+LayerName.replace("_", " ")+"</strong>";
 			while(iterator.hasNext()){
 				entry = iterator.next();
 				String key = entry.getKey();

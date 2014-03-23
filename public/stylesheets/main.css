@@ -97,6 +97,30 @@ body.mapFullPage{
 	       background-color:#cccccc;
 		  color:#999;
 }
+#legendsHeader{
+	border:solid;
+	border-width:1px;
+	cursor:pointer;
+}
+#legendsBox{
+	margin-top:10px;
+	margin-left:50px;
+	height: 25px;
+	width:205px;
+	background-color:#ffffff;
+	z-index:100;
+	position:absolute;
+	text-align:center;
+	font-size:15px;
+	border:solid;
+	border-width:1px;
+	border-radius:4px;
 
-
+}
+#legends{
+	background:white;
+	border:1px;
+	border-width:1px;
+	border-radius:4px;
+	}
 

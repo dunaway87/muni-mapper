@@ -33,10 +33,11 @@ function manageLayer(layername){
 					"border": "1px solid #ddd",
 					"color":"#333333",
 					"font-weight":"normal"
-					
 				});
+				$('#'+layername+'Legend').remove();
 				removeLayer(layers[i], i);
 				hasLayer = true;
+				$
 				break;
 			}
 
@@ -49,6 +50,8 @@ function manageLayer(layername){
 		    	"color":"#000000",
 		    	"font-weight":"bold"
 			});
+			$('#legends').append('<div id="'+layername+'Legend" class="legend"><b>'+layername.replace(/_/g," ")+'</b><br><img src="http://www.mountainhouseproject.com/legend/'+layername+'" alt="some_text"><div>');
+			
 			addLayerToArray(layername);
 		}
 	  };
@@ -76,6 +79,4 @@ function manageLayer(layername){
 		 	map.addLayer(layer);
 		 	return layer;
 };
-
-
 

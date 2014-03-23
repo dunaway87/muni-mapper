@@ -161,16 +161,30 @@ $("#settingsTab").click(function(){
         <script type='text/javascript'>
        loadMap();
         </script>
+    	<div id="legendsBox">   
+   		 	<div id="legendsHeader">
+      		 	<b>Legends</b> 
+      		 	<span id="legendsDownArrow" class="glyphicon glyphicon-chevron-down" style="float: right; padding:5px"></span>
+      		 	<span id="legendsUpArrow" class="glyphicon glyphicon-chevron-up" style="float: right; padding:5px; display:none"></span>
+     		</div>
+    		<div id="legends">
+    			
+    		</div>    
+    	</div>
     </div>
     </div>
   </div>
-  
 
 
         <script src="/public/javascripts/mapClicks.js" type="text/javascript"></script>
 
 <script type="text/javascript">
-
+$('#legendsHeader').click(function(){
+	$('#legends').toggle();
+	$('#legendsDownArrow').toggle();
+	$('#legendsUpArrow').toggle();
+	
+});
 
 </script>
 </body>

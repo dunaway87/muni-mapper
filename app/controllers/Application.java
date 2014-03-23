@@ -3,6 +3,7 @@ package controllers;
 import play.*;
 import play.libs.WS;
 import play.mvc.*;
+import play.vfs.VirtualFile;
 import searches.Address;
 import utils.DatabaseConnection;
 import geoserver.Geoserver;
@@ -70,7 +71,8 @@ public class Application extends Controller {
 			conn.close();
 			renderBinary(is);
 		} else {
-			renderBinary(new File(result.getString(1)));
+			File file = VirtualFile.fromRelativePath(result.getString(1)).getRealFile();
+			renderBinary(file);
 		}
 	}	
 

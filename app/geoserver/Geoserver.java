@@ -26,7 +26,6 @@ public class Geoserver {
 					charts.add(piechart);
 				}
 				if(obj.has("barchart")){
-					Logger.error("ha");
 					JsonObject barchart = new JsonObject();
 					barchart.addProperty("type", "bar");
 					barchart.add("data", obj.get("barchart"));
@@ -75,6 +74,8 @@ public class Geoserver {
 		}
 		JsonObject properties = features.get(0).getAsJsonObject().get("properties").getAsJsonObject();
 		properties.remove("fid");
+		properties.remove("gid");
+
 		properties.remove("bbox");
 		toReturn.addProperty("layer",layer);
 		toReturn.add("properties", properties);

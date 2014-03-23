@@ -1,13 +1,18 @@
 package controllers;
 
 import play.*;
+import play.libs.WS;
 import play.mvc.*;
 import searches.Address;
+import utils.DatabaseConnection;
 import geoserver.Geoserver;
 import geoserver.Layers;
 import html.JsonToHtml;
 
+import java.io.InputStream;
 import java.net.MalformedURLException;
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 
@@ -54,6 +59,16 @@ public class Application extends Controller {
 		address = address.toLowerCase();
 		renderJSON(Address.search(address.replace("road", "rd").replace("lp", "loop").replace("drive", "dr").replace("highway", "HWY").replace("circle", "cir").replace("avenue", "ave").replace("boulevard", "blvd")).toString());
 	}
+	
+	public static void legend(String layerName) throws SQLException{
+		Connection conn = DatabaseConnection.getConnection();
+		ResultSet result = conn.prepareStatement("Select source from folders.legend where layer_name = '"+layerName+"'").executeQuery();
+		result.next();
+		InputStream is = WS.url(result.getString(1)).get().getStream();
+		conn.close();
+		renderBinary(is);
+	}	
+	
 	
 	private static String fixBBox(String bbox) {
 		String[] points = bbox.split(",");

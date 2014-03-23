@@ -9,6 +9,7 @@ import geoserver.Geoserver;
 import geoserver.Layers;
 import html.JsonToHtml;
 
+import java.io.File;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.sql.Connection;
@@ -22,16 +23,16 @@ import com.google.gson.JsonObject;
 
 public class Application extends Controller {
 
-	
-    public static void map() {
-        render();
-    }
+
+	public static void map() {
+		render();
+	}
 	public static void getLayers() throws SQLException{
 		renderText(Layers.getLayers());
 	}
-	
+
 	public static void getLayersGeoserver() throws MalformedURLException, SQLException{
-	    String layers = Layers.getLayersGeoserver();
+		String layers = Layers.getLayersGeoserver();
 		Logger.info(layers.toString());
 		renderText(layers);
 	}
@@ -42,9 +43,9 @@ public class Application extends Controller {
 		JsonObject arrayWithGeom = Geoserver.getAllLayers(epsg, bbox, x, y, height, width, layers.split(","), getGeom);
 		JsonArray array = arrayWithGeom.get("array").getAsJsonArray();
 		JsonArray geometries = arrayWithGeom.get("geometries").getAsJsonArray();
-		
+
 		String html = JsonToHtml.buildIt(array);
-		
+
 		JsonObject toReturn = new JsonObject();
 		toReturn.add("geometries", geometries);
 		toReturn.addProperty("html", html);
@@ -59,21 +60,25 @@ public class Application extends Controller {
 		address = address.toLowerCase();
 		renderJSON(Address.search(address.replace("road", "rd").replace("lp", "loop").replace("drive", "dr").replace("highway", "HWY").replace("circle", "cir").replace("avenue", "ave").replace("boulevard", "blvd")).toString());
 	}
-	
+
 	public static void legend(String layerName) throws SQLException{
 		Connection conn = DatabaseConnection.getConnection();
-		ResultSet result = conn.prepareStatement("Select source from folders.legend where layer_name = '"+layerName+"'").executeQuery();
+		ResultSet result = conn.prepareStatement("Select source, source_type from folders.legend where layer_name = '"+layerName+"'").executeQuery();
 		result.next();
-		InputStream is = WS.url(result.getString(1)).get().getStream();
-		conn.close();
-		renderBinary(is);
+		if(result.getString(2).equals("url")){
+			InputStream is = WS.url(result.getString(1)).get().getStream();
+			conn.close();
+			renderBinary(is);
+		} else {
+			renderBinary(new File(result.getString(1)));
+		}
 	}	
-	
-	
+
+
 	private static String fixBBox(String bbox) {
 		String[] points = bbox.split(",");
 		bbox = points[1]+","+points[0]+","+points[3]+","+points[2];
 		return bbox;
 	}
-	
+
 }

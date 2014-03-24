@@ -27,11 +27,12 @@ public class JsonToHtml {
 			String html = "<fieldset><strong>"+LayerName.replace("_", " ")+"</strong>";
 			while(iterator.hasNext()){
 				entry = iterator.next();
-				String key = entry.getKey();
-				String value = entry.getValue().getAsString();
-
-				html = addProperty(key, value, html);
-
+				if(!entry.getValue().isJsonNull()){
+					String key = entry.getKey();
+					String value = entry.getValue().getAsString();
+				
+					html = addProperty(key, value, html);
+				}
 			}
 			html = html.concat("</fieldset>");
 			allHtml = allHtml.concat(html);
@@ -42,7 +43,7 @@ public class JsonToHtml {
 	}
 	public static String addProperty(String field, String value, String html){
 		if(!field.equals("More_Info")){
-		html = html.concat("<br><tr><td>"+field.replace("_", " ")+": </td><td>"+value+"</td></tr>");
+			html = html.concat("<br><tr><td>"+field.replace("_", " ")+": </td><td>"+value+"</td></tr>");
 		} else {
 			html = html.concat("<br><tr><td>"+value+"</td></tr>");
 

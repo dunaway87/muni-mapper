@@ -53,6 +53,7 @@ labelsContainer.selectAll('text').data(sortedData).enter().append('text')
   .attr('text-anchor', 'end')
   .text(barLabel);
 // bars
+
 var barsContainer = chart.append('g')
   .attr('transform', 'translate(' + barLabelWidth + ',' + (gridLabelHeight + gridChartOffset) + ')'); 
 barsContainer.selectAll("rect").data(sortedData).enter().append("rect")
@@ -61,6 +62,9 @@ barsContainer.selectAll("rect").data(sortedData).enter().append("rect")
   .attr('width', function(d) { return x(barValue(d)); })
   .attr('stroke', 'white')
   .attr('fill', barColor)
+ 
+  
+  
   //.attr('fill', 'steelblue');
 // bar value labels
 barsContainer.selectAll("text").data(sortedData).enter().append("text")

@@ -4,8 +4,15 @@ var layerNames = new Array();
 var latlng;
 var geoJsonLayers = new Array();
 var popup = L.popup();
+var justDoubleClicked = false;
+map.on('dblclick', function(){
+	console.log("blabla");
+	justDoubleClicked =true;
+	myVar=setTimeout(function(){justDoubleClicked=false},1000);
+});
 
 map.on('click', function(e){
+	
 	layerNames = new Array();
 	for(var i =0; i < layers.length; i++){
 		layerNames.push(layers[i].layerName);
@@ -19,7 +26,6 @@ map.on('click', function(e){
 	var height = map.getSize().y;
 	console.log(e.latlng);
 	latlng = e.latlng;
-	
 	addPopUp(bbox, epsg, x, y, width, height, latlng);
 	
 });
@@ -31,6 +37,7 @@ var jsToRun;
 function addPopUp(bbox, epsg, x, y, width, height, latlng){
 	$.get(
 			"/onClick?bbox="+bbox+"&epsg="+epsg+"&layers="+layerNames+"&x="+x+"&y="+y+"&height="+height+"&width="+width,function(result){
+				if(justDoubleClicked==false){
 				result = JSON.parse(result);
 				var popupHtml = result.html;
 				console.log(result);
@@ -39,10 +46,8 @@ function addPopUp(bbox, epsg, x, y, width, height, latlng){
 				if(popupHtml != "<div id='popupDiv'></div>"){
 					var options = {'maxWidth':'500', 'minWidth':'300', 'maxHeight':'600'};
 					popup = L.popup(options);
-				//	popup.setLatLng(latlng).setContent(popupHtml).openOn(map);
-
-					popup.setLatLng(latlng).setContent('<div id="popupdiv"></div>').openOn(map);
-					$('#popupdiv').append(popupHtml);
+						popup.setLatLng(latlng).setContent('<div id="popupdiv"></div>').openOn(map);
+						$('#popupdiv').append(popupHtml);
 					
 					
 				}
@@ -85,8 +90,8 @@ function addPopUp(bbox, epsg, x, y, width, height, latlng){
 					
 				}
 				
-
-
+				
+				}
 			});
 
 

@@ -49,11 +49,11 @@ body.mapFullPage{
 
 .searchContainer{
 	position:absolute;
-	bottom:10px;
-	height:250px;
+	right:18px;
+	height:275px;
 	width:300px;
 	z-index:4;
-	left:20px;
+	
 	background:#eeeeee;
 	opacity:.9;
 	display:none;
@@ -98,8 +98,7 @@ body.mapFullPage{
 		  color:#999;
 }
 #legendsHeader{
-	border:solid;
-	border-width:1px;
+	
 	cursor:pointer;
 }
 #legendsBox{
@@ -107,7 +106,7 @@ body.mapFullPage{
 	margin-left:50px;
 	height: 25px;
 	width:205px;
-	background-color:#ffffff;
+	background-color:#eeeeee;
 	z-index:100;
 	position:absolute;
 	text-align:center;
@@ -115,12 +114,14 @@ body.mapFullPage{
 	border:solid;
 	border-width:1px;
 	border-radius:4px;
+	opacity:.9;
 
 }
 #legends{
-	background:white;
+	background:#eeeeee;
 	border:1px;
 	border-width:1px;
 	border-radius:4px;
+	opacity:.9;
 	}
 

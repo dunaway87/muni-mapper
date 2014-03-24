@@ -11,9 +11,9 @@ public class DatabaseConnection {
 		//Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/automated_shapefile_uploads?user=dunawayjenckes&password=MacsEdgar2155");
 		//Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost:63333/automated_shapefile_uploads?user=dunawayjenckes&password=dunawayjenckes");
 		
-		//Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost:63333/automated_shapefile_uploads?user=dunawayjenckes&password=dunawayjenckes");
+		Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost:63333/automated_shapefile_uploads?user=dunawayjenckes&password=dunawayjenckes");
 
-		Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/automated_shapefile_uploads?user=dunawayjenckes&password=dunawayjenckes");
+		//Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/automated_shapefile_uploads?user=dunawayjenckes&password=dunawayjenckes");
 		return conn;
 	}
 }

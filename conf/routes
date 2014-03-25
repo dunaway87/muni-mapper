@@ -12,6 +12,11 @@ GET		/getLayersGeoserver						Application.getLayersGeoserver
 GET		/onClick								Application.onClick
 
 GET		/legend/{layerName}						Application.legend
+
+GET		/addressSearch							Application.addressSearch
+
+GET		/ownerSearch							Application.ownerSearch
+
 # Ignore favicon requests
 GET     /favicon.ico                            404
 # Map static resources from the /app/public folder to the /public path

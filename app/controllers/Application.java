@@ -24,6 +24,32 @@ import com.google.gson.JsonObject;
 
 public class Application extends Controller {
 
+	public static void validateLayer(String name) throws SQLException{
+		Connection conn = DatabaseConnection.getConnection();
+		name = name.replace(" ", "_");	
+		ResultSet results = conn.prepareStatement("Select count(*) from folders.layer where lower(layer_name) = '"+name.toLowerCase()+"'").executeQuery(); 
+		results.next();
+		if(results.getInt(1)>0){
+			renderText(true);
+		} else {
+			renderText(false);
+		}
+		
+	}
+	
+	public static void layerSearch(String name) throws SQLException{
+		Connection conn = DatabaseConnection.getConnection();
+		ResultSet results = conn.prepareStatement("Select layer_name, position('"+name.toLowerCase()+"' in lower(layer_name)) as position  from folders.layer where lower(layer_name) like '%"+name.toLowerCase()+"%' order by position, layer_name limit 7 ").executeQuery();
+		JsonArray array = new JsonArray();
+		while(results.next()){
+			JsonObject obj = new JsonObject();
+			obj.addProperty("name", results.getString(1).replace('_', ' '));
+			array.add(obj);
+		}
+		JsonObject toReturn = new JsonObject();
+		toReturn.add("layers", array);
+		renderText(toReturn);
+	}
 
 	public static void map() {
 		render();

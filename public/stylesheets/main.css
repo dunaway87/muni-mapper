@@ -121,3 +121,11 @@ body.mapFullPage{
 	opacity:.9;
 	}
 
+#layerSearch{
+	border-top-left-radius:8px;
+	border-bottom-left-radius:8px;
+}
+#layerSearchButton{
+	border-top-right-radius:8px;
+	border-bottom-right-radius:8px;
+}

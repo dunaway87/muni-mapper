@@ -44,7 +44,7 @@ function manageLayer(layername){
 		}
 		if(hasLayer == false){
 			$("#"+layername).css({
-				 "background-color":"#55555f",
+				 "background-color":"#999999",
 		       "border-style":"outset",
 		       "border-color":"#707373",
 		    	"color":"#000000",

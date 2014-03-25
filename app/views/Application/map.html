@@ -41,7 +41,7 @@ $('#layersTab').click(function(){
 $.get("/getLayers").done(function(dataSTR){
 	var data = jQuery.parseJSON(dataSTR);
  	console.log(data);
-	var folderHtml ='';
+	var folderHtml ='<li style="cursor:pointer" class="list-group-item"><b>Layer Search</b><input type="text" id="layerSearch" placeholder="Layer Name"><button id="layerSearchButton">Add Layer</button></li>';
  	for (var key in data) {
  		var folderName =key.replace(' ', '')+'Folder';
  			console.log(folderName);
@@ -59,15 +59,48 @@ $.get("/getLayers").done(function(dataSTR){
  	console.log(folderHtml);
  	$('#folderList').append(folderHtml);
 	
+	$('#layerSearch').autocomplete({
+	    source: function( request, response ) {
+	        $.ajax({
+	          url: "/layerSearch",
+	          data: {
+	            name: request.term
+	          },
+	          success: function( data ) {
+	        	  data = JSON.parse(data);
+	            response( $.map( data.layers, function( item ) {
+	              return {
+	                label: item.name,
+	                value: item.name,
+	              }
+	            }));
+	          }
+	        });
+	      },
+	     
+	});
+	$('#layerSearchButton').click(function(){
+		var enteredLayer = $('#layerSearch').val();
+		
+		$.get("/validateLayer?name="+enteredLayer).done(function(data){
+			if(data == 'true'){
+				manageLayer($('#layerSearch').val().replace(" ","_"));
+				$('#layerSearch').val('');
+			} else {
+				
+			}
+		});
+		
+	});
 	
 $("#settingsTab").click(function(){
 	$("#settingsList").slideToggle('fast');
 	console.log($("#settingsTab").css( "background-color" ));
-	if($("#settingsTab").css( "background-color" ) == "rgba(0, 0, 0, 0)" || $("#settingsTab").css( "background-color" ) == "rgb(16, 16, 16)"){
+	if($("#settingsTab").css( "background-color" ) == "rgba(0, 0, 0, 0)" || $("#settingsTab").css( "background-color" ) == "rgb(34, 34, 34)"){
 		$("#settingsTab").css("background-color", "#999");
-		$("#settingsTab").css("color", "#101010");
+		$("#settingsTab").css("color", "#333");
 	} else {
-		$("#settingsTab").css("background-color", "#101010");
+		$("#settingsTab").css("background-color", "#222");
 		$("#settingsTab").css("color", "#999");
 	}
 });

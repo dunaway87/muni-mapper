@@ -15,7 +15,9 @@ GET		/legend/{layerName}						Application.legend
 
 GET		/addressSearch							Application.addressSearch
 
-GET		/ownerSearch							Application.ownerSearch
+GET		/layerSearch							Application.layerSearch
+
+GET		/validateLayer							Application.validateLayer
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

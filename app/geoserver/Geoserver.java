@@ -79,7 +79,9 @@ public class Geoserver {
 		properties.remove("bbox");
 		toReturn.addProperty("layer",layer);
 		toReturn.add("properties", properties);
-		toReturn.add("geometry", features.get(0).getAsJsonObject().get("geometry").getAsJsonObject());
+		if(getGeom == true){
+			toReturn.add("geometry", features.get(0).getAsJsonObject().get("geometry").getAsJsonObject());
+		}
 		if(properties.has("piechart")){
 			toReturn.add("piechart", properties.get("piechart"));
 		}

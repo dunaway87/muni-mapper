@@ -19,6 +19,8 @@ GET		/layerSearch							Application.layerSearch
 
 GET		/validateLayer							Application.validateLayer
 
+GET		/myNeighborhood							Application.myNeighborhood
+
 # Ignore favicon requests
 GET     /favicon.ico                            404
 # Map static resources from the /app/public folder to the /public path

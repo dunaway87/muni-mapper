@@ -14,6 +14,7 @@ import java.io.File;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
@@ -24,6 +25,73 @@ import com.google.gson.JsonObject;
 
 public class Application extends Controller {
 
+	public static void myNeighborhood(double lat, double lon, int epsg, String bbox, int x, int y, int height, int width) throws SQLException{
+		String[] buildingTypes = Play.configuration.get("buildings").toString().split(",");
+		String baseSQL = VirtualFile.fromRelativePath("app/sql/NearestBuilding.sql").contentAsString();
+		Connection conn = DatabaseConnection.getConnection();
+		JsonArray array = new JsonArray();
+		PreparedStatement pstmt = null;
+		for(int i =0; i < buildingTypes.length; i++){
+			pstmt = conn.prepareStatement(baseSQL);
+			pstmt.setDouble(1, lon);
+			pstmt.setDouble(2, lat);
+			pstmt.setString(3, buildingTypes[i]);
+			Logger.info(pstmt.toString());
+			ResultSet results = pstmt.executeQuery();
+			results.next();
+			JsonObject obj = new JsonObject();
+			obj.addProperty("Label", results.getString(2));
+			obj.addProperty("Value", results.getString(1));
+			obj.addProperty("Distance", results.getString(3)+ " miles");
+			array.add(obj);
+		}
+		baseSQL =  VirtualFile.fromRelativePath("app/sql/NearestTrail.sql").contentAsString();
+		pstmt = conn.prepareStatement(baseSQL);
+		pstmt.setDouble(1, lon);
+		pstmt.setDouble(2, lat);
+		ResultSet results = pstmt.executeQuery();
+		results.next();
+		JsonObject obj = new JsonObject();
+		obj.addProperty("Label", "Trail");
+		String trailName;
+		if(results.getString(3).equals(results.getString(2))){
+			trailName = results.getString(2);
+		} else {
+			trailName = results.getString(3) + " "+ results.getString(2);
+		}
+		obj.addProperty("Name", trailName);
+		obj.addProperty("Distance", results.getString(1)+ " miles");
+		array.add(obj);
+
+		baseSQL =  VirtualFile.fromRelativePath("app/sql/NearestMajorTrail.sql").contentAsString();
+		pstmt = conn.prepareStatement(baseSQL);
+		pstmt.setDouble(1, lon);
+		pstmt.setDouble(2, lat);
+		results = pstmt.executeQuery();
+		results.next();
+		obj = new JsonObject();
+		obj.addProperty("Label", "Major Bike Trail");
+		trailName = new String();
+		if(results.getString(3).equals(results.getString(2))){
+			trailName = results.getString(2);
+		} else {
+			trailName = results.getString(3) + " "+ results.getString(2);
+		}
+		obj.addProperty("Name", trailName);
+		obj.addProperty("Distance", results.getString(1)+ " miles");
+		array.add(obj);
+
+		String layers = Play.configuration.getProperty("myNeighborhoodLayers");
+		bbox = fixBBox(bbox);
+		JsonObject geoserverStuff = Geoserver.getAllLayers(epsg, bbox, x, y, height, width, layers.split(","), false);
+		geoserverStuff.remove("geometries");
+		obj.add("geoserverStuff", geoserverStuff);
+		
+		conn.close();
+		renderText(array);
+	}
+	
+	
 	public static void validateLayer(String name) throws SQLException{
 		Connection conn = DatabaseConnection.getConnection();
 		name = name.replace(" ", "_");	
@@ -67,7 +135,7 @@ public class Application extends Controller {
 	public static void onClick(int epsg, String bbox, int x, int y, int height, int width, String layers, boolean getGeom){
 		bbox = fixBBox(bbox);
 		Logger.info("bbox %s", bbox);
-		JsonObject arrayWithGeom = Geoserver.getAllLayers(epsg, bbox, x, y, height, width, layers.split(","), getGeom);
+		JsonObject arrayWithGeom = Geoserver.getAllLayers(epsg, bbox, x, y, height, width, layers.split(","), true);
 		JsonArray array = arrayWithGeom.get("array").getAsJsonArray();
 		JsonArray geometries = arrayWithGeom.get("geometries").getAsJsonArray();
 

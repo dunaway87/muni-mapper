@@ -1,0 +1,1 @@
+Select round((ST_DISTANCE(ST_SETSRID(ST_POINT(?,?),4326)::geography,geography)/1609.34)::numeric,2) as distance, "Trail_Name", "System_Name"  from trails_with_geog order by distance asc limit 1

@@ -1,0 +1,1 @@
+Select "Name", "Type", round((ST_DISTANCE(ST_SETSRID(ST_POINT(?,?),4326)::geography,geography)/1609.34)::numeric,2) as distance from "All_Buildings" where lower("Type") like ? order by distance asc limit 1 

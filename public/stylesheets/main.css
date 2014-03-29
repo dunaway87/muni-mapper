@@ -60,14 +60,12 @@ body.mapFullPage{
 	border-radius:4px;
 	
 }
-
-
 #settingsTab{
-	margin-right:20px;
 	cursor: pointer;
 }
+
 .divider{
-	padding:15px;
+	padding:10px;
 }
 #settingsList{
 	min-height:100px;
@@ -129,3 +127,14 @@ body.mapFullPage{
 	border-top-right-radius:8px;
 	border-bottom-right-radius:8px;
 }
+
+
+.form-group{
+	position:relative;
+	left:10px;
+}
+
+
+
+
+

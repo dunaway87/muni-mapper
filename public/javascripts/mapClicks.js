@@ -35,7 +35,9 @@ map.on('click', function(e){
 var jsToRun;
 
 function addPopUp(bbox, epsg, x, y, width, height, latlng){
-	$.get(
+	if(neighborhoodClicked==false){
+		$.get(
+			
 			"/onClick?bbox="+bbox+"&epsg="+epsg+"&layers="+layerNames+"&x="+x+"&y="+y+"&height="+height+"&width="+width,function(result){
 				if(justDoubleClicked==false){
 				result = JSON.parse(result);
@@ -92,8 +94,22 @@ function addPopUp(bbox, epsg, x, y, width, height, latlng){
 				
 				
 				}
-			});
+				});
+			} else {
+				$('#map').css({'cursor':'wait'})
+				$('#myNeighborhood').css({'cursor':'wait'});
 
+				$('#myNeighborhood').toggle();
+
+				$.get("/myNeighborhood?bbox="+bbox+"&epsg="+epsg+"&layers="+layerNames+"&x="+x+"&y="+y+"&height="+height+"&width="+width+"&lat="+latlng.lat+"&lon="+latlng.lng,function(result){
+		               console.log(result);
+		               
+		               $('#map').css({'cursor':'default'});
+		               $('#myNeighborhood').css({'cursor':'default'});
+
+		       });
+				clickNeighborhoodButton();
+			}
 
 	}
 function removeGeoJson(){

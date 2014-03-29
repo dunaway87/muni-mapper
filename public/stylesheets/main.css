@@ -135,6 +135,17 @@ body.mapFullPage{
 }
 
 
+.modal-content{
+	position:absolute;
+	min-height:1000px;
+	height:1000px;
+	width:50%;
+	max-width:50%
+}
 
-
-
+#modalContent{
+height: 100%;
+width: 50%;
+margin-left: 25%;
+margin-top: 50px;	
+}

@@ -167,7 +167,7 @@ $("#settingsTab").click(function(){
         		</div>
         	</form>
        <ul class="nav navbar-nav navbar-right">
-       	 <li>
+       	 <li id="neighborhoodLI">
        	 	<a href="#" id ="neighborhoodTab">
        	 		<span id = "neighborboodTabLabel">My Neighboorhood</span>
        	 		<span class= "glyphicon glyphicon-home"></span>
@@ -210,21 +210,18 @@ $("#settingsTab").click(function(){
    <ul class="list-group" id="folderList">
 	</ul>     
     </div>
-<div class ="modal fade" id="myNeiborhood" tabindex= "-1" role = "dialog" aria-labelledby ="myNeighborhoodLabel" 
-	aria-hidden="true">
-	<div class = "modal-dialog">
-		<div class = "modal-content">
+<div class ="modal fade in" id="myNeighborhood" tabindex= "-1" role = "dialog" aria-labelledby ="myNeighborhoodLabel"  aria-hidden="false" style="display:none">
+		<div class = "modal-content" id="modalContent">
 			<div class = "modal-header">
-				<button type="button" class ="close" data-dismiss ="modal" aria-hidden="true">&times;</button>
+				<button type="button" class ="close" data-dismiss ="modal" id="closeModel" aria-hidden="true">&times;</button>
 				<h4 class = "modal-title" id = "myNeighborhoodLabel"> My NeighborHood</h4>
 			</div>
 			<div class ="modal-body">
 			<!-- MyNeighborhood SHIT -->
 			</div>
 			<div class = "modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss ="modal">Close</button>
+				<button type="button" class="btn btn-default" data-dismiss ="modal" id="closeModelButton">Close</button>
 			</div>
-		</div>
 	</div>	
 </div>
  	
@@ -252,6 +249,36 @@ $("#settingsTab").click(function(){
         <script src="/public/javascripts/mapClicks.js" type="text/javascript"></script>
 
 <script type="text/javascript">
+
+var neighborhoodClicked = false;
+$('#neighborhoodLI').click(function(){
+		clickNeighborhoodButton();
+	});
+$('#closeModelButton').click(function(){
+	closeModel();
+});
+$('#closeModel').click(function(){
+	closeModel();
+});
+function closeModel(){
+		$('#myNeighborhood').toggle();
+		 $('#map').css({'cursor':'default'});
+	     $('#myNeighborhood').css({'cursor':'default'});
+}
+	function clickNeighborhoodButton(){
+		if($("#neighborhoodLI").css( "background-color" ) == "rgba(0, 0, 0, 0)" || $("#neighborhoodLI").css( "background-color" ) == "rgb(34, 34, 34)"){
+			$("#neighborhoodLI").css("background-color", "#999");
+			$("#neighborboodTabLabel").css("color", "#333");
+			$(".glyphicon-home").css("color", "#333");
+			neighborhoodClicked=true;
+			
+		} else {
+			$("#neighborhoodLI").css("background-color", "#222");
+			$("#neighborboodTabLabel").css("color", "#999");
+			$(".glyphicon-home").css("color", "#999");
+			neighborhoodClicked=false;
+		}
+	}
 $('#address').autocomplete({
     source: function( request, response ) {
         $.ajax({

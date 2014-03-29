@@ -19,6 +19,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 
+import myNeighborhood.DistanceFinder;
+import myNeighborhood.ParcelCoverages;
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
@@ -79,16 +82,29 @@ public class Application extends Controller {
 		}
 		obj.addProperty("Name", trailName);
 		obj.addProperty("Distance", results.getString(1)+ " miles");
-		array.add(obj);
 
 		String layers = Play.configuration.getProperty("myNeighborhoodLayers");
 		bbox = fixBBox(bbox);
 		JsonObject geoserverStuff = Geoserver.getAllLayers(epsg, bbox, x, y, height, width, layers.split(","), false);
 		geoserverStuff.remove("geometries");
-		obj.add("geoserverStuff", geoserverStuff);
+		
+		JsonObject toReturn = new JsonObject();
+		
+		array.add(DistanceFinder.findNearest(conn, lat, lon, "Municipal_Parks", "Municipal Park"));
+		array.add(DistanceFinder.findNearest(conn, lat, lon, "Chugach_National_Forest", "Chugach National Forest"));
+		array.add(DistanceFinder.findNearest(conn, lat, lon, "Chugach_State_Park", "Chugach State Park"));
+		array.add(obj);
+		toReturn.add("distanceLayers", array);
+		toReturn.add("geoserverLayers", geoserverStuff);
+		
+		JsonArray coverages = new JsonArray();
+		
+		coverages.add(ParcelCoverages.parcelCoverage(conn, ParcelCoverages.getParcelGeom(conn, lat, lon), "Wetlands", "Wetlands"));
+		coverages.add(ParcelCoverages.parcelCoverage(conn, ParcelCoverages.getParcelGeom(conn, lat, lon), "Avalanche", "Avalanche"));
+		toReturn.add("coveragePercents", coverages);
 		
 		conn.close();
-		renderText(array);
+		renderText(toReturn); 
 	}
 	
 	

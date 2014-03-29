@@ -62,7 +62,7 @@ public class Application extends Controller {
 		} else {
 			trailName = results.getString(3) + " "+ results.getString(2);
 		}
-		obj.addProperty("Name", trailName);
+		obj.addProperty("Value", trailName);
 		obj.addProperty("Distance", results.getString(1)+ " miles");
 		array.add(obj);
 
@@ -80,7 +80,7 @@ public class Application extends Controller {
 		} else {
 			trailName = results.getString(3) + " "+ results.getString(2);
 		}
-		obj.addProperty("Name", trailName);
+		obj.addProperty("Value", trailName);
 		obj.addProperty("Distance", results.getString(1)+ " miles");
 
 		String layers = Play.configuration.getProperty("myNeighborhoodLayers");

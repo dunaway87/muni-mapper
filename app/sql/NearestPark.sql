@@ -1,0 +1,1 @@
+Select round((ST_DISTANCE(ST_SETSRID(ST_POINT(?,?),4326)::geography,my_geom::geography)/1609.34)::numeric,2) as distance, "Name"  from "$tableName$" order by distance asc limit 1

@@ -1,0 +1,1 @@
+Select round((ST_AREA(ST_Intersection(my_geom, ST_SETSRID(ST_GeomFromText(?),4326)))/ST_AREA(my_geom))::numeric,2) as intersection from "$layerName$" where ST_AREA(my_geom) !=0 order by intersection desc limit 1

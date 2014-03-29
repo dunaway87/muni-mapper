@@ -52,7 +52,9 @@ public class Geoserver {
 	public static String GEOSERVER_URL = "http://geoblaster.info:8080/geoserver/wms/wms?SERVICE=WMS&CRS=EPSG:$epsg$&VERSION=1.3.0&REQUEST=GetFeatureInfo&EXCEPTIONS=JSON&BBOX=$bbox$&x=$x$&y=$y$&INFO_FORMAT=application/json&LAYERS=$layers$&QUERY_LAYERS=$layers$&WIDTH=$width$&HEIGHT=$height$";
 
 	public static JsonObject getLayerInfo(int epsg, String bbox, int x, int y, int height, int width, String layer, boolean getGeom) {
+		JsonObject toReturn = new JsonObject();
 
+		try{
 		ST template = new ST(GEOSERVER_URL, '$', '$');
 
 		template.add("epsg", epsg);
@@ -67,7 +69,6 @@ public class Geoserver {
 		JsonObject obj = WS.url(template.render()).get().getJson().getAsJsonObject();
 		
 		Logger.info("%s",obj);
-		JsonObject toReturn = new JsonObject();
 		JsonArray features = obj.get("features").getAsJsonArray();
 		if(features.size()==0){
 			return null;
@@ -88,7 +89,10 @@ public class Geoserver {
 		if(properties.has("barchart")){
 			toReturn.add("barchart", properties.get("barchart"));
 		}	
-		
+		} catch(Exception e){
+			Logger.info(e.toString());
+			return null;
+		}
 		return toReturn;
 	}
 

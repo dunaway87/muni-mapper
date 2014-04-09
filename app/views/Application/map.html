@@ -62,7 +62,6 @@ $.get("/getLayers").done(function(dataSTR){
  	
  	
  	
- 	console.log(folderHtml);
  	$('#folderList').append(folderHtml);
 	
 	$('#layerSearch').autocomplete({
@@ -131,18 +130,43 @@ $("#settingsTab").click(function(){
 			manageLayer(layers[0].layerName);
 		}
 		layers = new Array();
+		
+		
+
+		});
+	console.log(layerNamesInit);
+	console.log("ahsdljkhsdjkl;fhasjkld");
+	
+	for(var i = 0; i < layerNamesInit.length;i++){
+		if(layerNamesInit[i] != ""){
+			layername = layerNamesInit[i];
+			$("#"+layername).css({
+				 "background-color":"#999999",
+		       "border-style":"outset",
+		       "border-color":"#707373",
+		    	"color":"#000000",
+		    	"font-weight":"bold"
+			});
+			$('#legends').append('<div id="'+layername+'Legend" class="legend"><b>'+layername.replace(/_/g," ")+'</b><br><img src="http://www.mountainhouseproject.com/legend/'+layername+'" alt="some_text"><div>');
+			
+			addLayerToArray(layername);
+		}
+		}
+	
 	});
 	
  });
 
-});
 
 
 </script>
 
 
 </head>
-
+	<input type="number" id="zoomLat" style="display:none" value=${zoomLat}>
+	<input type="number" id="zoomLon" style="display:none" value=${zoomLon}>
+	<input type="number" id="zoomLevel" style="display:none" value=${zoomLevel}>
+	<input type="text" id="layerNames" style="display:none" value=${layerNames}>
 <header>
 	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container-fluid">
@@ -247,6 +271,7 @@ $("#settingsTab").click(function(){
 
 
         <script src="/public/javascripts/mapClicks.js" type="text/javascript"></script>
+        <script src="/public/javascripts/mapPans.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 

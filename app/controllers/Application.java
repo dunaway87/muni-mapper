@@ -2,6 +2,7 @@ package controllers;
 
 import play.*;
 import play.libs.WS;
+import play.libs.WS.WSRequest;
 import play.mvc.*;
 import play.vfs.VirtualFile;
 import searches.Address;
@@ -24,9 +25,26 @@ import myNeighborhood.ParcelCoverages;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonPrimitive;
 
 
 public class Application extends Controller {
+	public static void test(){
+		render();
+	}
+
+	public static void map(double zoomLat, double zoomLon, int zoomLevel, String layers) {
+		JsonArray array = new JsonArray();
+		if(layers != null && layers != ""){
+			String[] layerNamesArray = layers.split(",");
+			for(int i = 0; i < layerNamesArray.length; i++){
+				array.add(new JsonPrimitive(layerNamesArray[i]));
+			}
+		}
+
+		String layerNames = array.toString();
+		render(zoomLat, zoomLon, zoomLevel, layerNames);
+	}
 
 	public static void myNeighborhood(double lat, double lon, int epsg, String bbox, int x, int y, int height, int width) throws SQLException{
 		String[] buildingTypes = Play.configuration.get("buildings").toString().split(",");
@@ -87,27 +105,27 @@ public class Application extends Controller {
 		bbox = fixBBox(bbox);
 		JsonObject geoserverStuff = Geoserver.getAllLayers(epsg, bbox, x, y, height, width, layers.split(","), false);
 		geoserverStuff.remove("geometries");
-		
+
 		JsonObject toReturn = new JsonObject();
-		
+
 		array.add(DistanceFinder.findNearest(conn, lat, lon, "Municipal_Parks", "Municipal Park"));
 		array.add(DistanceFinder.findNearest(conn, lat, lon, "Chugach_National_Forest", "Chugach National Forest"));
 		array.add(DistanceFinder.findNearest(conn, lat, lon, "Chugach_State_Park", "Chugach State Park"));
 		array.add(obj);
 		toReturn.add("distanceLayers", array);
 		toReturn.add("geoserverLayers", geoserverStuff);
-		
+
 		JsonArray coverages = new JsonArray();
-		
+
 		coverages.add(ParcelCoverages.parcelCoverage(conn, ParcelCoverages.getParcelGeom(conn, lat, lon), "Wetlands", "Wetlands"));
 		coverages.add(ParcelCoverages.parcelCoverage(conn, ParcelCoverages.getParcelGeom(conn, lat, lon), "Avalanche", "Avalanche"));
 		toReturn.add("coveragePercents", coverages);
-		
+
 		conn.close();
 		renderText(toReturn); 
 	}
-	
-	
+
+
 	public static void validateLayer(String name) throws SQLException{
 		Connection conn = DatabaseConnection.getConnection();
 		name = name.replace(" ", "_");	
@@ -118,9 +136,9 @@ public class Application extends Controller {
 		} else {
 			renderText(false);
 		}
-		
+
 	}
-	
+
 	public static void layerSearch(String name) throws SQLException{
 		Connection conn = DatabaseConnection.getConnection();
 		ResultSet results = conn.prepareStatement("Select layer_name, position('"+name.toLowerCase()+"' in lower(layer_name)) as position  from folders.layer where lower(layer_name) like '%"+name.toLowerCase()+"%' order by position, layer_name limit 7 ").executeQuery();
@@ -135,9 +153,7 @@ public class Application extends Controller {
 		renderText(toReturn);
 	}
 
-	public static void map() {
-		render();
-	}
+
 	public static void getLayers() throws SQLException{
 		renderText(Layers.getLayers());
 	}

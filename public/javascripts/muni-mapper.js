@@ -1,8 +1,32 @@
 var map;
+var layerNamesInit;
 function loadMap(){
-map = new L.Map('map', {center: new L.LatLng(61.15, -149.9), zoom: 11});
+	
+var startY = $('#zoomLat').val();
+var startX = $('#zoomLon').val();
+var zoomLevel = $('#zoomLevel').val();
+layerNamesInit = JSON.parse($('#layerNames').val());
+
+console.log(startX);
+console.log(startY);
+console.log(zoomLevel);
+console.log(layerNames);
+
+if(startX == 0){
+	startX = -149.9;
+} 
+if(startY == 0){
+	startY = 61.15; 
+}
+if(zoomLevel == 0){
+	zoomLevel=11;
+}
+
+map = new L.Map('map', {center: new L.LatLng(startY, startX), zoom: zoomLevel});
 addBaseMap('dunaway87.hffcoej7');
 $("#sataliteListItem").addClass("baseMapItemClicked");
+
+
 
 }
 var basemap;
@@ -54,6 +78,7 @@ function manageLayer(layername){
 			
 			addLayerToArray(layername);
 		}
+		updateURL();
 	  };
 	  function addLayerToArray(layername){
 			var layerInfo = new Object();

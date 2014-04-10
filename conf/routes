@@ -21,6 +21,7 @@ GET		/validateLayer							Application.validateLayer
 
 GET		/myNeighborhood							Application.myNeighborhood
 
+GET		/ownerSearch					Application.ownerSearch
 
 GET		/test									Application.test
 

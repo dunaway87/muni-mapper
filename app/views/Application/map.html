@@ -154,7 +154,54 @@ $("#settingsTab").click(function(){
 		}
 	
 	});
+
+$('#addressSearchButton').click(function(){
+		console.log(addresses);
+	 	var addressName = $('#address').val();
+	 	console.log(addressName);
+	 	for(var i = 0; i < addresses.length; i ++){
+	 		
+ 			console.log('typed addess');
+ 			console.log(addressName);
+ 			console.log('address option');
+ 			console.log(addresses[i].address);
+	 		
+	 		if(addresses[i].address == addressName){
+	 			changeAddress(addresses[i]);
+	 			break;
+	 		}
+	 	}
 	
+	
+});
+
+$('#ownerSearchButton').click(function(){
+	console.log(owners);
+ 	var ownerName = $('#owner').val();
+ 	console.log(ownerName);
+ 	for(var i = 0; i < owners.length; i ++){
+ 		
+			console.log('typed addess');
+			console.log(ownerName);
+			console.log('address option');
+			console.log(owners[i].owner);
+ 		
+ 		if(owners[i].owner == ownerName){
+ 			changeAddress(owners[i]);
+ 			break;
+ 		}
+ 	}
+
+
+});
+
+
+function changeAddress(address){
+	map.panTo(L.latLng(address.lat,address.lon));
+	map.setZoom(17);
+	var addressPopup = L.popup();
+	addressPopup.setLatLng(L.latLng(address.lat,address.lon)).setContent("Address: "+address.address+" <br>Owner: "+address.owner).openOn(map);
+}
  });
 
 
@@ -180,16 +227,16 @@ $("#settingsTab").click(function(){
           <a class="navbar-brand" href="#">Anchorage Municipal Maps</a>
         </div>
         <div class="navbar-collapse collapse">
-        	<form class = "navbar-form navbar-left" role= "form">
+        	<div class = "navbar-form navbar-left" role= "form">
         		<div class = "form-group">
         			<input type="text"  class ="form-control" id="address" placeholder="address"/>
 	   		        <button id="addressSearchButton" type="submit" class = "btn btn-default"><span class = "glyphicon glyphicon-search"></span></button>
         		</div>
         		<div class = "form-group">
-        		  	<input type="text"  class ="form-control" id="ownerName" placeholder="Parcel Owner"/>
-	       	      	<button id="nameSearchButton" class = "btn btn-default" type="submit"><span class = "glyphicon glyphicon-search"></span></button>
+        		  	<input type="text"  class ="form-control" id="owner" placeholder="Parcel Owner"/>
+	       	      	<button id="ownerSearchButton" class = "btn btn-default" type="submit"><span class = "glyphicon glyphicon-search"></span></button>
         		</div>
-        	</form>
+        	</div>
        <ul class="nav navbar-nav navbar-right">
        	 <li id="neighborhoodLI">
        	 	<a href="#" id ="neighborhoodTab">
@@ -324,19 +371,20 @@ $('#address').autocomplete({
       },
       minLength: 2,
 });
-$('#ownerName').autocomplete({
+	var owners;
+$('#owner').autocomplete({
     source: function( request, response ) {
         $.ajax({
           url: "/ownerSearch",
           data: {
-            name: request.term
+            ownerName: request.term
           },
           success: function( data ) {
-        	  addresses = data.addresses;
-            response( $.map( data.addresses, function( item ) {
+        	  owners = data.owners;
+            response( $.map( data.owners, function( item ) {
               return {
-                label: item.address,
-                value: item.address,
+                label: item.owner,
+                value: item.owner,
               }
             }));
           }

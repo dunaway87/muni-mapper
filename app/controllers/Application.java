@@ -6,12 +6,14 @@ import play.libs.WS.WSRequest;
 import play.mvc.*;
 import play.vfs.VirtualFile;
 import searches.Address;
+import searches.Owner;
 import utils.DatabaseConnection;
 import geoserver.Geoserver;
 import geoserver.Layers;
 import html.JsonToHtml;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.sql.Connection;
@@ -188,6 +190,20 @@ public class Application extends Controller {
 		renderJSON(Address.search(address.replace("road", "rd").replace("lp", "loop").replace("drive", "dr").replace("highway", "HWY").replace("circle", "cir").replace("avenue", "ave").replace("boulevard", "blvd")).toString());
 	}
 
+	public static void ownerSearch(String ownerName) throws Exception{
+		if(ownerName.split(" ").length == 2){
+			String[] ownerNameArray = ownerName.split(" ");
+			ownerName = ownerNameArray[1]+" "+ownerNameArray[0];
+		}
+		
+		JsonObject owners = new JsonObject();
+		owners.add("owners", Owner.search(ownerName));
+		
+		renderJSON(owners.toString());
+		
+	}
+	
+	
 	public static void legend(String layerName) throws SQLException{
 		Connection conn = DatabaseConnection.getConnection();
 		ResultSet result = conn.prepareStatement("Select source, source_type from folders.legend where layer_name = '"+layerName+"'").executeQuery();

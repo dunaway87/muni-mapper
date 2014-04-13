@@ -121,7 +121,7 @@ $("#settingsTab").click(function(){
 		$("#sataliteListItem").removeClass("baseMapItemClicked");
 		addBaseMap('dunaway87.hff94j6p');
 	});
-	
+
 	$("#clearAllLayersListItem").click(function(){
 		console.log(layers);
 		var length = layers.length;
@@ -281,30 +281,56 @@ function changeAddress(address){
    <ul class="list-group" id="folderList">
 	</ul>     
     </div>
-<div class ="modal fade in" id="myNeighborhood" tabindex= "-1" role = "dialog" aria-labelledby ="myNeighborhoodLabel"  aria-hidden="false" style="display:none">
+	<div class ="modal fade in" id="myNeighborhood" tabindex= "-1" role = "dialog" aria-labelledby ="myNeighborhoodLabel"  aria-hidden="false" style="display:none">
 		<div class = "modal-content" id="modalContent">
 			<div class = "modal-header">
 				<button type="button" class ="close" data-dismiss ="modal" id="closeModel" aria-hidden="true">&times;</button>
 				<h4 class = "modal-title" id = "myNeighborhoodLabel"> My NeighborHood</h4>
-			</div>
-			<div class ="modal-body">
-			<!-- MyNeighborhood SHIT -->
-			</div>
+			
+				<ul class = "nav nav-tabs" id="tabContent">
+					<li class = "active"><a href="#buildings" data-toggle="tab">Buildings and Recreation</a></li>
+					<li><a href ="#landUse" data-toggle = "tab">Land Use</a></li>
+					<li><a href ="#politcal" data-toggle="tab">Political</a></li>
+					<li><a href="#census" data-toggle= "tab">Census	</a></li>
+					<li><a href = "#environment" data-toggle = "tab"> Environment</a></li>
+				</ul>
+			</div>	
+			<div class = "modal-body">
+				<div class = "tab-content">
+				<div class = "tab-pane active" id = "buildings">
+						
+				</div>
+				<div class = "tab-pane" id = "landUse">
+					
+				</div>
+				<div class = "tab-pane" id = "politcal">
+				</div>
+				<div class = "tab-pane" id = "census">
+				
+				</div>
+				<div class = "tab-pane" id = "environment">
+				</div>
+				</div>
+			
+		</div>
 			<div class = "modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss ="modal" id="closeModelButton">Close</button>
 			</div>
+			
 	</div>	
 </div>
  	
+  	<div id ="legendsWrapper">
     <div id="legendsBox">   
    		 	<div id="legendsHeader">
-      		 	<b>Legends</b> 
+      		 	<b style ="padding-left:5px;">Legends</b> 
       		 	<span id="legendsDownArrow" class="glyphicon glyphicon-chevron-down" style="float: right; padding:5px"></span>
       		 	<span id="legendsUpArrow" class="glyphicon glyphicon-chevron-up" style="float: right; padding:5px; display:none"></span>
      		</div>
     		<div id="legends">
     			
-    		</div>    
+    		</div>  
+    		</div>  
     	</div>
     <div id= "map">
         <script type='text/javascript'>
@@ -324,12 +350,15 @@ function changeAddress(address){
 
 var neighborhoodClicked = false;
 $('#neighborhoodLI').click(function(){
+
 		clickNeighborhoodButton();
 	});
 $('#closeModelButton').click(function(){
+	
 	closeModel();
 });
 $('#closeModel').click(function(){
+	
 	closeModel();
 });
 function closeModel(){

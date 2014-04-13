@@ -96,22 +96,110 @@ function addPopUp(bbox, epsg, x, y, width, height, latlng){
 				}
 				});
 			} else {
-				$('#map').css({'cursor':'wait'})
-				$('#myNeighborhood').css({'cursor':'wait'});
+				 $('#map').css({'cursor':'wait'})
+                 $('#myNeighborhood').css({'cursor':'wait'});
 
-				$('#myNeighborhood').toggle();
+                 $('#myNeighborhood').toggle();
 
-				$.get("/myNeighborhood?bbox="+bbox+"&epsg="+epsg+"&layers="+layerNames+"&x="+x+"&y="+y+"&height="+height+"&width="+width+"&lat="+latlng.lat+"&lon="+latlng.lng,function(result){
-		               console.log(result);
-		               
-		               $('#map').css({'cursor':'default'});
-		               $('#myNeighborhood').css({'cursor':'default'});
+                /* $.get("/myNeighborhood?layers= critical hospital, fire station, elementary school, middle school, high school, grocery store, trails, major trails, Municipal_Parks &bbox="+bbox+"&epsg="+epsg+"&layers="+layerNames+"&x="+x+"&y="+y+"&height="+height+"&width="+width+"&lat="+latlng.lat+"&lon="+latlng.lng,function(result){
+                console.log(result);
+           
+                var allLayers = jQuery.parseJSON(result);
+	               var distanceLayers = allLayers.distanceLayers;
+	               var content = "";
+	               for (var x=0; x<distanceLayers.length; x++){
+	            	  
+	            	   content +=distanceLayers[x].Value;
+	            	   content += "   ";
+	            	   content += distanceLayers[x].Distance;
+	            	   content += "<br>";
+	            	   content += "<br>";
+	            	  
+	               }
+	               
+	               $('#buildings').append(content);
+	               $('#map').css({'cursor':'default'});
+	               $('#myNeighborhood').css({'cursor':'default'});
+	           
+	                
+	                
+        });*/
+                 
+                 appendToMyNeighborhood('critical hospital, fire station, elementary school, middle school, high school, grocery store, trails, major trails, Municipal_Parks ', 'buildings',bbox, epsg, x, y, width, height, latlng);
+                 
+                 appendToMyNeighborhood('Chugach_National_Forest, Chugach_State_Park, Zoning, Subdivisions  ', 'landUse',bbox, epsg, x, y, width, height, latlng);
+                 appendToMyNeighborhood('House_Districts, Senate_Districts, Assembly_Districs, Community_Councils, Zip_Codes, Community_Borders ', 'politcal',bbox, epsg, x, y, width, height, latlng);
+                 appendToMyNeighborhood('Census_Race, Census_Home_Ownership, Census_Gender ', 'census',bbox, epsg, x, y, width, height, latlng);
+                 appendToMyNeighborhood('Geology, Seismic, Wetlands, Avalanche ', 'environment',bbox, epsg, x, y, width, height, latlng);
 
-		       });
-				clickNeighborhoodButton();
+                 clickNeighborhoodButton();
 			}
 
 	}
+function appendToMyNeighborhood(layers,divToAppendTo,bbox, epsg, x, y, width, height, latlng){
+	console.log("start");
+	$.get("/myNeighborhood?layers="+layers+"&bbox="+bbox+"&epsg="+epsg+"&layers="+layerNames+"&x="+x+"&y="+y+"&height="+height+"&width="+width+"&lat="+latlng.lat+"&lon="+latlng.lng,function(result){
+        console.log(result);
+        
+        var allLayers = jQuery.parseJSON(result);
+           var distanceLayers = allLayers.distanceLayers;
+           var content = "";
+           for (var x=0; x<distanceLayers.length; x++){
+        	  
+        	   content +=distanceLayers[x].Value;
+        	   content += "   ";
+        	   content += distanceLayers[x].Distance;
+        	   content += "<br>";
+        	   content += "<br>";
+        	  console.log("finish");
+           }
+           var coveragePercents = allLayers.coveragePercents;
+           
+           for (var x=0; x<coveragePercents.length; x++){
+        	  
+        	   content +=coveragePercents[x].Label;
+        	   content += "   ";
+        	   content += coveragePercents[x].Value;
+        	   content += "<br>";
+        	   content += "<br>";
+           }
+           var geoserverLayers = allLayers.geoserverLayers.array;
+
+           	var geocontent = "";
+           	if(geoserverLayers != undefined){
+           	for(var i=0; i<geoserverLayers.length; i++){
+           		geocontent+= geoserverLayers[i].layer;
+           		geocontent+= " ";
+           		geocontent+= objToHtml(geoserverLayers[i].properties);
+           		geocontent+="<br>";
+           		
+           		}
+           	}
+           $('#'+divToAppendTo).append(content);
+           $('#'+divToAppendTo).append(geocontent);
+           $('#map').css({'cursor':'default'});
+           $('#myNeighborhood').css({'cursor':'default'});
+       
+            
+            
+});
+	
+}
+
+function objToHtml(obj){
+	var htmlToReturn = "";
+	for (var label in obj) {
+		  var value = obj[label];
+		htmlToReturn += label;
+		htmlToReturn += '<br>';
+		htmlToReturn += value;
+		htmlToReturn += '<br>';
+		htmlToReturn += '<br>';
+		  
+		}
+	return htmlToReturn;
+}
+
 function removeGeoJson(){
 	for(var i = 0; i < geoJsonLayers.length; i++){
 		map.removeLayer(geoJsonLayers[i]);
@@ -120,4 +208,21 @@ function removeGeoJson(){
 }
 function removePopup(){
 	map.removeLayer(popup);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

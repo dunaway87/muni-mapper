@@ -96,10 +96,10 @@ public class MyNeighborhood {
 		JsonArray coverages = new JsonArray();
 
 		if(layers.contains("Wetlands")){
-			coverages.add(ParcelCoverages.parcelCoverage(conn, ParcelCoverages.getParcelGeom(conn, lat, lon), "Wetlands", "Wetlands"));
+			coverages.add(ParcelCoverages.parcelCoverage(conn, ParcelCoverages.getParcelNumber(conn, lat, lon), "Wetlands", "Wetlands"));
 		}
 		if(layers.contains("Avalanche")){
-			coverages.add(ParcelCoverages.parcelCoverage(conn, ParcelCoverages.getParcelGeom(conn, lat, lon), "Avalanche", "Avalanche"));
+			coverages.add(ParcelCoverages.parcelCoverage(conn, ParcelCoverages.getParcelNumber(conn, lat, lon), "Avalanche", "Avalanche"));
 		}
 		toReturn.add("coveragePercents", coverages);
 		conn.close();

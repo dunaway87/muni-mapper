@@ -1,1 +1,17 @@
-Select round((ST_AREA(ST_Intersection(my_geom, ST_SETSRID(ST_GeomFromText(?),4326)))/ST_AREA(my_geom))::numeric,2) as intersection from "$layerName$" where ST_AREA(my_geom) !=0 order by intersection desc limit 1
+SELECT (
+round(
+(
+(
+ST_AREA(
+ST_INTERSECTION(
+(Select my_geom from "Parcels" where "Parcel_Number" = '$parcelNumber$'),
+my_geom)
+)
+)/(
+Select ST_AREA(my_geom) from "Parcels" where "Parcel_Number" = '$parcelNumber$'
+)
+)::numeric,3)*100)
+from "$layerName$" where ST_AREA(ST_INTERSECTION(
+(Select my_geom from "Parcels" where "Parcel_Number" = '$parcelNumber$'),
+my_geom)) >0
+

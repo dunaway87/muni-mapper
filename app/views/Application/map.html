@@ -197,14 +197,32 @@ $('#ownerSearchButton').click(function(){
 
 
 function changeAddress(address){
+
 	map.panTo(L.latLng(address.lat,address.lon));
 	map.setZoom(17);
+	console.log(map.getSize().y);
+	clickData= new Object();
+	clickData = {
+			bbox:map.getBounds().toBBoxString(), 
+			epsg:4326, x:map.getSize().x/2, 
+			y:map.getSize().y/2, 
+			width:map.getSize().x, 
+			height:map.getSize().y, 
+			latlng:map.getCenter(),
+			zoom:map.getZoom()
+			};
+	console.log(clickData);
+	
 	var addressPopup = L.popup();
-	addressPopup.setLatLng(L.latLng(address.lat,address.lon)).setContent("Address: "+address.address+" <br>Owner: "+address.owner).openOn(map);
+	addressPopup.setLatLng(L.latLng(address.lat,address.lon)).setContent("Address: "+address.address+" <br>Owner: "+address.owner+"<br><br><div style='cursor:pointer' onClick='searchMyNeighborhood()'>My Neighborhood <span class='glyphicon glyphicon-home'></span></div>'").openOn(map);
 }
  });
 
-
+function searchMyNeighborhood(){
+	neighborhoodClicked=true;
+	addPopUp(clickData.bbox, clickData.epsg,clickData.x, clickData.y, clickData.width, clickData.height, clickData.latlng);
+	neighborhoodClicked=false;
+};
 
 </script>
 

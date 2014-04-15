@@ -36,8 +36,12 @@ var jsToRun;
 
 function addPopUp(bbox, epsg, x, y, width, height, latlng){
 	if(neighborhoodClicked==false){
+		clickData = new Object();
+		clickData = {bbox:bbox, epsg:epsg, x:x, y:y, width:width, height:height, latlng:latlng,zoom:map.getZoom()};
+		console.log(clickData);
 		$.get(
-			
+		
+				
 			"/onClick?bbox="+bbox+"&epsg="+epsg+"&layers="+layerNames+"&x="+x+"&y="+y+"&height="+height+"&width="+width,function(result){
 				if(justDoubleClicked==false){
 				result = JSON.parse(result);
@@ -131,7 +135,7 @@ function addPopUp(bbox, epsg, x, y, width, height, latlng){
                  appendToMyNeighborhood('House_Districts, Senate_Districts, Assembly_Districs, Community_Councils, Zip_Codes, Community_Borders ', 'politcal',bbox, epsg, x, y, width, height, latlng);
                  appendToMyNeighborhood('Census_Race, Census_Home_Ownership, Census_Gender ', 'census',bbox, epsg, x, y, width, height, latlng);
                  appendToMyNeighborhood('Geology, Seismic, Wetlands, Avalanche ', 'environment',bbox, epsg, x, y, width, height, latlng);
-
+                 
                  clickNeighborhoodButton();
 			}
 
@@ -215,8 +219,7 @@ function removePopup(){
 	
 	
 	
-	
-	
+ var clickData = new Object();
 	
 	
 	

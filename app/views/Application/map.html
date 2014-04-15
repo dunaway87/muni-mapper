@@ -366,6 +366,7 @@ function searchMyNeighborhood(){
 
 <script type="text/javascript">
 
+
 var neighborhoodClicked = false;
 $('#neighborhoodLI').click(function(){
 
@@ -383,6 +384,10 @@ function closeModel(){
 		$('#myNeighborhood').toggle();
 		 $('#map').css({'cursor':'default'});
 	     $('#myNeighborhood').css({'cursor':'default'});
+			$("#neighborhoodLI").css("background-color", "#222");
+			$("#neighborboodTabLabel").css("color", "#999");
+			$(".glyphicon-home").css("color", "#999");
+	     $('.tab-pane').empty();
 }
 	function clickNeighborhoodButton(){
 		if($("#neighborhoodLI").css( "background-color" ) == "rgba(0, 0, 0, 0)" || $("#neighborhoodLI").css( "background-color" ) == "rgb(34, 34, 34)"){

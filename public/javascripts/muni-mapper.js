@@ -105,3 +105,15 @@ function manageLayer(layername){
 		 	return layer;
 };
 
+$(window).resize(function(){
+	changeWrapperMarginTop();
+});
+function changeWrapperMarginTop(){
+	if(window.innerWidth < 1152 && window.innerWidth > 766){
+		$('#wrapper').css('margin-top', '100px');
+		$('#settingsList').css('margin-top', '100px');
+	} else {
+		$('#wrapper').css('margin-top', '51px');
+		$('#settingsList').css('margin-top', '51px');
+	}
+}

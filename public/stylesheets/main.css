@@ -100,7 +100,7 @@ body.mapFullPage{
 	position:absolute;
 	margin-top:10px;
 	margin-left:50px;
-	min-height:calc(100%-10px);
+	min-height:calc(100% - 10px);
 }
 #legendsBox{
 	margin-top:10px;

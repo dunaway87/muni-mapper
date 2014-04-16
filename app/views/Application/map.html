@@ -157,6 +157,7 @@ $("#settingsTab").click(function(){
 $('#addressSearchButton').click(function(){
 		console.log(addresses);
 	 	var addressName = $('#address').val();
+	 	foundIt=false;
 	 	console.log(addressName);
 	 	for(var i = 0; i < addresses.length; i ++){
 	 		
@@ -167,10 +168,16 @@ $('#addressSearchButton').click(function(){
 	 		
 	 		if(addresses[i].address == addressName){
 	 			changeAddress(addresses[i]);
+	 			foundIt=true;
 	 			break;
 	 		}
+	 		
 	 	}
-	
+	 	if(foundIt==false){
+			changeAddress(addresses[0]);
+			$('#address').val(addresses[0].address);
+			foundIt=false;
+		}
 	
 });
 
@@ -178,6 +185,7 @@ $('#ownerSearchButton').click(function(){
 	console.log(owners);
  	var ownerName = $('#owner').val();
  	console.log(ownerName);
+ 	var foundIt = false;
  	for(var i = 0; i < owners.length; i ++){
  		
 			console.log('typed addess');
@@ -187,15 +195,21 @@ $('#ownerSearchButton').click(function(){
  		
  		if(owners[i].owner == ownerName){
  			changeAddress(owners[i]);
+ 			foundIt=true;
  			break;
  		}
  	}
-
+	if(foundIt==false){
+		changeAddress(owners[0]);
+		$('#owner').val(owners[0].owner);
+		foundIt=false;
+	}
 
 });
 
 
 function changeAddress(address){
+ 	var foundIt = false;
 
 	map.panTo(L.latLng(address.lat,address.lon));
 	map.setZoom(17);
@@ -403,6 +417,7 @@ function closeModel(){
 		}
 	}
 $('#address').autocomplete({
+	autoFocus: true,
     source: function( request, response ) {
         $.ajax({
           url: "/addressSearch",
@@ -424,6 +439,7 @@ $('#address').autocomplete({
 });
 	var owners;
 $('#owner').autocomplete({
+	autoFocus: true,
     source: function( request, response ) {
         $.ajax({
           url: "/ownerSearch",

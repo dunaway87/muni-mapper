@@ -1,5 +1,5 @@
 
-function makeBarChart(data) {
+function makeBarChart(data, divToAppendTo) {
 	console.log(data);
 var valueLabelWidth = 20; // space reserved for value labels (right)
 var barHeight = 20; // height of one bar
@@ -24,7 +24,7 @@ var y = function(d, i) { return yScale(i); };
 var yText = function(d, i) { return y(d, i) + yScale.rangeBand() / 2; };
 var x = d3.scale.linear().domain([0, d3.max(sortedData, barValue)]).range([0, maxBarWidth]);
 // svg container element
-var chart = d3.select('#popupDiv').append("svg")
+var chart = d3.select('#'+divToAppendTo).append("svg")
   .attr('width', maxBarWidth + barLabelWidth + valueLabelWidth+15)
   .attr('height', gridLabelHeight + gridChartOffset + sortedData.length * barHeight).attr('style', 'margin-left:-20');
 // grid line labels

@@ -1,3 +1,7 @@
+.myNeighborhoodTable
+{
+padding:6px;
+}
 
 * {
     -webkit-user-select: none;
@@ -149,19 +153,22 @@ body.mapFullPage{
 	position:absolute;
 	height:60%;
 	width:50%;
-	max-width:50%
+	max-width:50%;
+	max-height:775px;
 }
 
 #modalContent{
-height: 70%;
+height: 75%;
 width: 50%;
+max-width:700px;
 margin-left: 25%;
 margin-top: 50px;	
 }
 
 .modal-body{
 	overflow:auto;
-	height:65%;
+	height:calc(100% - 100px);
+
 }
 
 #neighborhoodLI {

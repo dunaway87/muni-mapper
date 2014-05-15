@@ -3,13 +3,13 @@
     		
     
 
- 	function makePieChart(data){
+ 	function makePieChart(data, divName){
     var w = 100,                        //width
     h = 100,                            //height
     r = 50,                            //radius
     color = getColor();     //builtin range of colors
-
-    var vis = d3.select("#popupDiv")
+    console.log('div name to append is '+ divName);
+    var vis = d3.select("#"+divName)
         .append("svg:svg")              //create the SVG element inside the <body>
         .data([data])                   //associate our data with the document
             .attr("width", w)           //set the width and height of our visualization (these will be attributes of the <svg> tag

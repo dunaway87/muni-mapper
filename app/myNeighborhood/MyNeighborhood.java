@@ -8,6 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
+import org.apache.commons.lang.WordUtils;
+
 import play.Logger;
 import play.Play;
 import play.vfs.VirtualFile;
@@ -23,15 +25,16 @@ public class MyNeighborhood {
 		if(requestedLayers.contains("critical hospital")){
 			buildingTypesList.add("critical hospital");
 		}
-		if(requestedLayers.contains("elementary school")){
-			buildingTypesList.add("elementary school");
-		}
 		if(requestedLayers.contains("high school")){
 			buildingTypesList.add("high school");
 		}	
 		if(requestedLayers.contains("middle school")){
 			buildingTypesList.add("middle school");
-		}	
+		}
+		if(requestedLayers.contains("elementary school")){
+			buildingTypesList.add("elementary school");
+		}
+	
 		if(requestedLayers.contains("grocery store")){
 			buildingTypesList.add("grocery store");
 		}
@@ -57,8 +60,8 @@ public class MyNeighborhood {
 			ResultSet results = pstmt.executeQuery();
 			results.next();
 			JsonObject obj = new JsonObject();
-			obj.addProperty("Label", results.getString(2));
-			obj.addProperty("Value", results.getString(1));
+			obj.addProperty("Label", WordUtils.capitalize(results.getString(2).replace("CRITICAL", "").toLowerCase()));
+			obj.addProperty("Value", WordUtils.capitalize(results.getString(1).toLowerCase()));
 			obj.addProperty("Distance", results.getString(3)+ " miles");
 			array.add(obj);
 		}
@@ -90,6 +93,13 @@ public class MyNeighborhood {
 		if(layers.contains("Chugach_State_Park")){
 			array.add(DistanceFinder.findNearest(conn, lat, lon, "Chugach_State_Park", "Chugach State Park"));
 		}
+		if(layers.contains("lakes")){
+			array.add(DistanceFinder.findNearest(conn, lat, lon, "Lakes", "Lakes"));
+		}
+		if(layers.contains("streams")){
+			array.add(DistanceFinder.findNearest(conn, lat, lon, "Streams", "Streams"));
+		}
+		
 		toReturn.add("distanceLayers", array);
 		toReturn.add("geoserverLayers", geoserverStuff);
 
@@ -108,6 +118,12 @@ public class MyNeighborhood {
 	}
 	private static String[] getGeoserverLayers(String requestedLayers){
 		LinkedList<String> list = new LinkedList<String>();
+		if(requestedLayers.contains("Community_Borders")){
+			list.add("Community_Borders");
+		}
+		if(requestedLayers.contains("Community_Councils")){
+			list.add("Community_Councils");
+		}	
 		if(requestedLayers.contains("Zoning")){
 			list.add("Zoning");
 		}
@@ -126,30 +142,39 @@ public class MyNeighborhood {
 		if(requestedLayers.contains("Senate_Districts")){
 			list.add("Senate_Districts");
 		}
+		if(requestedLayers.contains("Assembly_Districts")){
+			list.add("Assembly_Districts");
+		}
 		if(requestedLayers.contains("Zip_Codes")){
 			list.add("Zip_Codes");
 		}
-		if(requestedLayers.contains("Community_Borders")){
-			list.add("Community_Borders");
-		}
+
 		if(requestedLayers.contains("Assembly_Districts")){
 			list.add("Assembly_Districts");
 		}		
-		if(requestedLayers.contains("Community_Councils")){
-			list.add("Community_Councils");
-		}		
+	
 		if(requestedLayers.contains("Census_Race")){
 			list.add("Census_Race");
-		}		
-		if(requestedLayers.contains("Community_Councils")){
-			list.add("Community_Councils");
-		}		
+		}			
 		if(requestedLayers.contains("Census_Home_Ownership")){
 			list.add("Census_Home_Ownership");
 		}		
 		if(requestedLayers.contains("Census_Gender")){
 			list.add("Census_Gender");
+		}
+		if(requestedLayers.contains("easements")){
+			list.add("Easements");
 		}	
+		if(requestedLayers.contains("parcels")){
+			list.add("Parcels");
+		}	
+		if(requestedLayers.contains("military")){
+			list.add("Military");
+		}		
+		if(requestedLayers.contains("Home_Vacancy")){
+			list.add("Home_Vacancy");
+		}
+		
 		if(list.size()>0){
 			String[] toReturn  = new String[list.size()];
 			for(int i = 0; i< list.size(); i++){

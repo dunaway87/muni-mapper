@@ -26,7 +26,11 @@ public class DistanceFinder {
 		rs.next(); 
 		JsonObject obj = new JsonObject();
 		obj.addProperty("Label", tableLabel);
-		obj.addProperty("Value", rs.getString(2));
+		String name = rs.getString(2);
+		if(name.equals("")){
+			name = "Unknown";
+		}
+		obj.addProperty("Value", name );
 		obj.addProperty("Distance", rs.getDouble(1)+ " miles");
 		
 		return obj;

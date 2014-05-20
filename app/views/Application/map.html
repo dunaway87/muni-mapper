@@ -316,37 +316,41 @@ function searchMyNeighborhood(){
 		<div class = "modal-content" id="modalContent">
 			<div class = "modal-header">
 				<button type="button" class ="close" data-dismiss ="modal" id="closeModel" aria-hidden="true">&times;</button>
-				<h4 class = "modal-title" id = "myNeighborhoodLabel"> My NeighborHood</h4>
+				<h4 class = "modal-title" id = "myNeighborhoodLabel"> My Neighborhood</h4>
 			
 				<ul class = "nav nav-tabs" id="tabContent">
-					<li class = "active"><a href="#buildings" data-toggle="tab">Buildings and Recreation</a></li>
-					<li><a href ="#landUse" data-toggle = "tab">Land Use</a></li>
-					<li><a href ="#politcal" data-toggle="tab">Political</a></li>
-					<li><a href="#census" data-toggle= "tab">Census	</a></li>
-					<li><a href = "#environment" data-toggle = "tab"> Environment</a></li>
+					<li class = "active"><a href="#landUse" data-toggle="tab">Land Use</a></li>
+					<li><a href ="#environment" data-toggle = "tab">Environment</a></li>
+					<li><a href ="#recreation" data-toggle="tab">Recreation</a></li>
+					<li><a href="#buildings" data-toggle= "tab">Buildings</a></li>
+					<li><a href = "#politcal" data-toggle = "tab">Political</a></li>
+					<li><a href = "#census" data-toggle = "tab">Census</a></li>
 				</ul>
 			</div>	
 			<div class = "modal-body">
 				<div class = "tab-content">
-				<div class = "tab-pane active" id = "buildings">
+				<div class = "tab-pane active" id = "landUse">
 						
 				</div>
-				<div class = "tab-pane" id = "landUse">
-					
+				<div class = "tab-pane" id = "environment">
+				</div>
+				
+				<div class = "tab-pane" id = "recreation">
+			
+				</div>
+				<div class = "tab-pane" id = "buildings">
 				</div>
 				<div class = "tab-pane" id = "politcal">
 				</div>
 				<div class = "tab-pane" id = "census">
 				
 				</div>
-				<div class = "tab-pane" id = "environment">
-				</div>
+
+				
 				</div>
 			
 		</div>
-			<!-- <div class = "modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss ="modal" id="closeModelButton">Close</button>
-			</div> -->
+
 			
 	</div>	
 </div>
@@ -401,6 +405,22 @@ function closeModel(){
 			$("#neighborboodTabLabel").css("color", "#999");
 			$(".glyphicon-home").css("color", "#999");
 	     $('.tab-pane').empty();
+	     
+/* 	     document.getElementById("landUse").className = "tab-pane-active";
+
+	     
+	     document.getElementById("environment").className = "tab-pane";
+	     document.getElementById("recreation").className = "tab-pane";
+	     document.getElementById("buildings").className = "tab-pane";
+	     document.getElementById("politcal").className = "tab-pane";
+	     document.getElementById("census").className = "tab-pane";
+	     
+	     
+	     
+	      */
+	     
+	     
+			 
 }
 	function clickNeighborhoodButton(){
 		if($("#neighborhoodLI").css( "background-color" ) == "rgba(0, 0, 0, 0)" || $("#neighborhoodLI").css( "background-color" ) == "rgb(34, 34, 34)"){

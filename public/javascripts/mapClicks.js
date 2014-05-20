@@ -105,32 +105,24 @@ function addPopUp(bbox, epsg, x, y, width, height, latlng){
 
 		$('#myNeighborhood').toggle();
 
+		appendToMyNeighborhood('Zoning, Subdivisions, easements, parcels, military', 'landUse',bbox, epsg, x, y, width, height, latlng);
+		appendToMyNeighborhood('Geology, Seismic, Wetlands, Avalanche, lakes, streams', 'environment',bbox, epsg, x, y, width, height, latlng);
 
 
-		appendToMyNeighborhood('critical hospital, fire station, elementary school, middle school, high school, grocery store, trails, major trails, Municipal_Parks ', 'buildings',bbox, epsg, x, y, width, height, latlng);
+		appendToMyNeighborhood('trails, major trails, Municipal_Parks, Chugach_State_Park, Chugach_National_Forest, lakes, streams','recreation',bbox, epsg, x, y, width, height, latlng);
+		appendToMyNeighborhood('critical hospital, fire station, elementary school, middle school, high school, grocery store','buildings',bbox, epsg, x, y, width, height, latlng);
 
-		appendToMyNeighborhood('Chugach_National_Forest, Chugach_State_Park, Zoning, Subdivisions', 'landUse',bbox, epsg, x, y, width, height, latlng);
-		appendToMyNeighborhood('House_Districts, Senate_Districts, Assembly_Districs, Community_Councils, Zip_Codes, Community_Borders ', 'politcal',bbox, epsg, x, y, width, height, latlng);
-		appendToMyNeighborhood('Census_Race, Census_Home_Ownership, Census_Gender, Census_Race', 'census',bbox, epsg, x, y, width, height, latlng);
-		appendToMyNeighborhood('Geology, Seismic, Wetlands, Avalanche ', 'environment',bbox, epsg, x, y, width, height, latlng);
+		 appendToMyNeighborhood('Community_Borders, Community_Councils,House_Districts, Senate_Districts, Assembly_Districts, Zip_Codes', 'politcal',bbox, epsg, x, y, width, height, latlng);
+		appendToMyNeighborhood('Census_Home_Ownership, Census_Gender, Census_Race, Home_Vacancy', 'census',bbox, epsg, x, y, width, height, latlng);
 
 		clickNeighborhoodButton();
 	}
 
 }
-function appendRowToModal(label, value,distance, backgroundColor){
-	var toReturn = "";
-	toReturn += "<tr class='myNeighborhoodTable' style='background:"+backgroundColor+"'>"
-		toReturn += "<th class='myNeighborhoodTable' style='width:200px; background:"+backgroundColor+"'>"+label+"</th>"
-		toReturn += "<td class='myNeighborhoodTable' style='width:200px; background:"+backgroundColor+"'>"+value+"</td>";
-		toReturn += "<td class='myNeighborhoodTable' style='width:200px; background:"+backgroundColor+"'>"+distance+"</td>";
-	
 
-	return toReturn;
-}
 function appendToMyNeighborhood(layers,divToAppendTo,bbox, epsg, x, y, width, height, latlng){
 	console.log("start");
-	$.get("/myNeighborhood?layers="+layers+"&bbox="+bbox+"&epsg="+epsg+"&layers="+layerNames+"&x="+x+"&y="+y+"&height="+height+"&width="+width+"&lat="+latlng.lat+"&lon="+latlng.lng,function(result){
+	$.get("/myNeighborhood?layers="+layers+"&bbox="+bbox+"&epsg="+epsg+"&x="+x+"&y="+y+"&height="+height+"&width="+width+"&lat="+latlng.lat+"&lon="+latlng.lng,function(result){
 		console.log(result);
 
 		var allLayers = jQuery.parseJSON(result);
@@ -166,13 +158,7 @@ function appendToMyNeighborhood(layers,divToAppendTo,bbox, epsg, x, y, width, he
 				evenOdd = evenOdd*-1;
 			}
 		}
-		
-
-		
-		
-
-		
-		
+	
 		content += "</table>";
 
 		$('#'+divToAppendTo).append(content);
@@ -204,6 +190,18 @@ function appendToMyNeighborhood(layers,divToAppendTo,bbox, epsg, x, y, width, he
 
 	});
 
+}
+
+
+function appendRowToModal(label, value,distance, backgroundColor){
+	var toReturn = "";
+	toReturn += "<tr class='myNeighborhoodTable' style='background:"+backgroundColor+"'>"
+		toReturn += "<th class='myNeighborhoodTable' style='width:200px; background:"+backgroundColor+"'>"+new String(label).replace("_", " ")+"</th>"
+		toReturn += "<td class='myNeighborhoodTable' style='width:200px; background:"+backgroundColor+"'>"+new String(value).replace("_", " ")+"</td>";
+		toReturn += "<td class='myNeighborhoodTable' style='width:200px; background:"+backgroundColor+"'>"+new String(distance).replace("_", " ")+"</td>";
+	
+
+	return toReturn;
 }
 
 function getRowColor(evenOdd){

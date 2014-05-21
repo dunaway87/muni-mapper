@@ -23,11 +23,31 @@
   
   
  <script type="text/javascript">
+ var folderDivs = new Array();
 
  function folderClick(folderName){
+	 if($("#"+folderName).is(":visible")){
+		 
 	 	 $("#"+folderName+"UpArrow").toggle();
 	 	 $("#"+folderName+"DownArrow").toggle();
-	 	$("#"+folderName).toggle()
+	 	$("#"+folderName).toggle();
+	 	
+	 } else {
+	 	for(var i =0; i<folderDivs.length;i++){
+	 		var currentFolderName = folderDivs[i];
+	 		console.log(currentFolderName);
+	 		if($("#"+currentFolderName).is(":visible")){
+	 			$("#"+currentFolderName).toggle();
+	 		 	 $("#"+currentFolderName+"UpArrow").toggle();
+	 		 	 $("#"+currentFolderName+"DownArrow").toggle();
+	 		} 
+	 	}
+	 	 $("#"+folderName+"UpArrow").toggle();
+	 	 $("#"+folderName+"DownArrow").toggle();
+	 	$("#"+folderName).toggle();
+	 	
+	 }
+	 	
  }
 $(document).ready(function (){
 	$('#searchTab').click(function(){
@@ -39,22 +59,20 @@ $('#layersTab').click(function(){
 });	
 
 
-
-
 $.get("/getLayers").done(function(dataSTR){
 	var data = jQuery.parseJSON(dataSTR);
  	console.log(data);
-	var folderHtml ='<li style="cursor:pointer" class="list-group-item"><b>Layer Search</b><input type="text" id="layerSearch" placeholder="Layer Name"><button id="layerSearchButton">Add Layer</button></li>';
+	var folderHtml ='';
  	for (var key in data) {
  		var folderName =key.replace(' ', '')+'Folder';
  			console.log(folderName);
- 			folderHtml = folderHtml+'<li style="cursor:pointer" class="list-group-item" onClick="folderClick(\''+folderName+'\')">'+key+'<span id="'+folderName+'DownArrow" class="glyphicon glyphicon-chevron-down" style="float:right; display:none"></span><span id="'+folderName+'UpArrow" class="glyphicon glyphicon-chevron-up" style="float:right"></span></li><ul class="list-group" id="'+folderName+'" style="display:none; cursor:pointer">';
+ 			folderHtml = folderHtml+'<li style="cursor:pointer" class="list-group-item folder" onClick="folderClick(\''+folderName+'\')">'+key+'<span id="'+folderName+'DownArrow" class="glyphicon glyphicon-chevron-down" style="float:right; display:none"></span><span id="'+folderName+'UpArrow" class="glyphicon glyphicon-chevron-up" style="float:right"></span></li><ul class="list-group" id="'+folderName+'" style="display:none; margin-bottom:0px; cursor:pointer">';
  			
- 				
+ 			folderDivs.push(folderName);
 	 	  
 	 	   var obj = data[key];
  	    for (var prop in obj) { 
-			folderHtml = folderHtml+'<li id="'+obj[prop]+'"class="list-group-item" style = "margin-left:40px; cursor:pointer" onClick="manageLayer(\''+obj[prop]+'\')">'+obj[prop].replace(/_/g,' ')+'</li>';
+			folderHtml = folderHtml+'<li id="'+obj[prop]+'"class="list-group-item layerItem" style = "margin-left:40px; cursor:pointer" onClick="manageLayer(\''+obj[prop]+'\')">'+obj[prop].replace(/_/g,' ')+'</li>';
  	      } 
  	    folderHtml = folderHtml+'</ul></li>';
  	   }
@@ -309,8 +327,18 @@ function searchMyNeighborhood(){
 <div id ="wrapper">
 <div id ="container" class="container-fluid">
   <div id = "layerGroupContainer">
-   <ul class="list-group" id="folderList">
-	</ul>     
+   <ul class="list-group" id="addLayerUL">
+   <li style="cursor:pointer" class="list-group-item"><b>Layer Search</b><input type="text" id="layerSearch" placeholder="Layer Name"><button id="layerSearchButton">Add Layer</button></li>
+   </ul>
+   <ul id='allLayersAndList'>
+   <li style="cursor:pointer" class="list-group-item" id="allLayersLabel">
+      <span id="DownArrow" class="glyphicon glyphicon-chevron-left" style="float:left; margin-left:-10px;padding-right:10px;margin-top:2px;"></span> 
+   
+   <b >All Layers</b>
+   </li>
+   <ul class="list-group" id="folderList" style="display:none">
+   </ul>
+   </ul>
     </div>
 	<div class ="modal fade in" id="myNeighborhood" tabindex= "-1" role = "dialog" aria-labelledby ="myNeighborhoodLabel"  aria-hidden="false" style="display:none">
 		<div class = "modal-content" id="modalContent">
@@ -345,7 +373,6 @@ function searchMyNeighborhood(){
 				<div class = "tab-pane" id = "census">
 				
 				</div>
-
 				
 				</div>
 			
@@ -382,7 +409,10 @@ function searchMyNeighborhood(){
         <script src="/public/javascripts/mapPans.js" type="text/javascript"></script>
 
 <script type="text/javascript">
-
+$('#allLayersAndList').hover(function(){
+	$('#folderList').toggle()
+	
+	});
 
 var neighborhoodClicked = false;
 $('#neighborhoodLI').click(function(){

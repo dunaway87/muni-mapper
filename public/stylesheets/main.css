@@ -2,7 +2,17 @@
 {
 padding:6px;
 }
-
+#addLayerUL{
+	margin-left:250px;
+}
+.folder{
+		box-shadow: 3px 3px 1px #111111;
+}
+#folderList{
+	margin-right:272px;
+	margin-top:-35px;
+	
+}
 * {
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -23,10 +33,17 @@ body.mapFullPage{
 	position:absolute;
 	
 	}
+	
+#allLayersLabel{
+	margin-left:210px;
+	margin-top:-25px;
+	font-size:14px;
+	
+}
 #layerGroupContainer{
 	position:absolute;
 	height:100% ;
-	width:275px;
+	width:525px;
 	right:18px;
 }
 #rowing{

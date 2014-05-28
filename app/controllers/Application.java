@@ -35,6 +35,10 @@ public class Application extends Controller {
 	public static void test(){
 		render();
 	}
+	
+	public static void muniHome(){
+		render();
+	}
 
 	public static void map(double zoomLat, double zoomLon, int zoomLevel, String layers) {
 		JsonArray array = new JsonArray();

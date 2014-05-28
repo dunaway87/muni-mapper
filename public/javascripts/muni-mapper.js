@@ -53,7 +53,7 @@ function manageLayer(layername){
 		for(var i =0; i < layers.length; i++){
 			 if(layers[i].layerName == layername){
 				$("#"+layername).css({
-					"background-color": "#fff",
+					"background-color": "#ccc",
 					"border": "1px solid #ddd",
 					"color":"#333333",
 					"font-weight":"normal"

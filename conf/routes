@@ -3,6 +3,8 @@
 # ~~~~
 
 # Home page
+GET  	/muniHome								Application.muniHome
+
 GET     /                                       Application.map
 
 GET		/getLayers								Application.getLayers

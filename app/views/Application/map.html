@@ -28,9 +28,10 @@
  function folderClick(folderName){
 	 if($("#"+folderName).is(":visible")){
 		 
-		 $("#"+folderName+"Button").css("background-color", "#ffffff");
+		 $("#"+folderName+"Button").css("background-color", "#cccccc");
 		 
 	 	$("#"+folderName).toggle();
+	 	
 	 	
 	 } else {
 	 	for(var i =0; i<folderDivs.length;i++){
@@ -38,13 +39,13 @@
 	 		console.log(currentFolderName);
 	 		if($("#"+currentFolderName).is(":visible")){
 	 			$("#"+currentFolderName).toggle();
-	 			$("#"+currentFolderName+"Button").css("background-color", "#ffffff");
+	 			$("#"+currentFolderName+"Button").css("background-color", "#cccccc");
 	 			
 	 		} 
 	 	}
 
 	 	$("#"+folderName).toggle();
-		 $("#"+folderName+"Button").css("background-color", "#cccccc");
+		 $("#"+folderName+"Button").css("background-color", "#848482");
 
 	 }
 	 	
@@ -52,9 +53,29 @@
  
 
  
- 
- 
+ function clickedSettingsTab(){
+		
+		$("#settingsList").slideToggle('fast');
+		console.log($("#settingsTab").css( "background-color" ));
+		if($("#settingsTab").css( "background-color" ) == "rgba(0, 0, 0, 0)" || $("#settingsTab").css( "background-color" ) == "rgb(34, 34, 34)"){
+			$("#settingsTab").css("background-color", "#999");
+			$("#settingsTab").css("color", "#333");
+		} else {
+			$("#settingsTab").css("background-color", "#222");
+			$("#settingsTab").css("color", "#999");
+		}
+	
+}
+ var dontRemoveLegend = false;
+ function toggleLayer(layerToToggle){
+	 	console.log(layerToToggle);
+	 	dontRemoveLegend = true;
+		manageLayer(layerToToggle);		
+		dontRemoveLegend = false;
+	}
 $(document).ready(function (){
+	
+	
 	$('#searchTab').click(function(){
 		$('.searchContainer').slideToggle('fast');
 		$('#layerGroupContainer').slideToggle('slow');
@@ -68,24 +89,26 @@ $.get("/getLayers").done(function(dataSTR){
 	var data = jQuery.parseJSON(dataSTR);
  	console.log(data);
 	var folderHtml ='';
+	var folderOffset = 0;
  	for (var key in data) {
  		var folderName =key.replace(' ', '')+'Folder';
  			console.log(folderName);
- 			folderHtml = folderHtml+'<button type = "button" id="'+folderName+'Button" class="btn btn-default" onClick="folderClick(\''+folderName+'\')">'+key+' </button> ';
+ 			folderHtml = folderHtml+'<button type = "button" id="'+folderName+'Button" class="my-btn" onMouseOut="folderClick(\''+folderName+'\')" onMouseOver="folderClick(\''+folderName+'\')">'+key+' </button><br> ';
  		
  			folderDivs.push(folderName);
 	 	  
 	 	   var obj = data[key];
 	 	   
-	 	   var foldersContent = '<ul id = "'+folderName+'" class="folderContent" style = "display: none;">';
+	 	   var foldersContent = '<ul id = "'+folderName+'" class="folderContent" onMouseOut="folderClick(\''+folderName+'\')" onMouseOver="folderClick(\''+folderName+'\')" style = "display: none; margin-top:'+folderOffset*35+'px">';
 	 	   
 	 	   
 	 	   
  	    for (var prop in obj) { 
-			foldersContent = foldersContent+'<li id="'+obj[prop]+'"class="list-group-item layerItem" style = "background-color:#cccccc; margin-left:40px; cursor:pointer" onClick="manageLayer(\''+obj[prop]+'\')">'+obj[prop].replace(/_/g,' ')+'</li>';
+			foldersContent = foldersContent+'<li id="'+obj[prop]+'"class="list-group-item layerItem" style = "background-color:#cccccc; margin-left:40px; cursor:pointer" onMouseOut="$(\'#'+obj[prop]+'\').css(\'font-weight\', \'normal\')" onMouseOver="$(\'#'+obj[prop]+'\').css(\'font-weight\', \'bold\')" onClick="manageLayer(\''+obj[prop]+'\')">'+obj[prop].replace(/_/g,' ')+'</li>';
  	      }  
  	    foldersContent = foldersContent +'</ul>';
  	   	$('#foldersContent').append(foldersContent);
+ 	   	folderOffset++;
  	}
  	
  	
@@ -125,18 +148,15 @@ $.get("/getLayers").done(function(dataSTR){
 		});
 		
 	});
+
+	
 	
 $("#settingsTab").click(function(){
-	$("#settingsList").slideToggle('fast');
-	console.log($("#settingsTab").css( "background-color" ));
-	if($("#settingsTab").css( "background-color" ) == "rgba(0, 0, 0, 0)" || $("#settingsTab").css( "background-color" ) == "rgb(34, 34, 34)"){
-		$("#settingsTab").css("background-color", "#999");
-		$("#settingsTab").css("color", "#333");
-	} else {
-		$("#settingsTab").css("background-color", "#222");
-		$("#settingsTab").css("color", "#999");
-	}
+	clickedSettingsTab();
+	
 });
+
+
 
 
 	$("#sataliteListItem").click(function(){
@@ -175,13 +195,16 @@ $("#settingsTab").click(function(){
 		    	"color":"#000000",
 		    	"font-weight":"bold"
 			});
-			$('#legends').append('<div id="'+layername+'Legend" class="legend"><b>'+layername.replace(/_/g," ")+'</b><br><img src="http://www.mountainhouseproject.com/legend/'+layername+'" alt="some_text"><div>');
+			$('#legends').append('<div id="'+layername+'Legend" class="legend"><b>'+layername.replace(/_/g," ")+'</b><span class="glyphicon glyphicon-remove-circle x-glyph" onClick="manageLayer(\''+layername+'\')"></span><span class ="toggle-checkbox" onClick="toggleLayer(\''+layername+'\')"><input id="'+layername+'Toggler" type = "checkbox" checked></span><br><img src="http://www.mountainhouseproject.com/legend/'+layername+'" alt="some_text"><div>');
 			
 			addLayerToArray(layername);
 		}
 		}
 	
 	});
+
+
+
 
 $('#addressSearchButton').click(function(){
 		console.log(addresses);
@@ -322,15 +345,15 @@ function searchMyNeighborhood(){
     </div>
 </header>
 <body>
-<div id="settingsList">
+<div id="settingsList" >
 
 <ul class="nav nav-list">
   <li class="active" id="baseMapList">
  	<a href="#"> Base Map</a>
- 	<li id="sataliteListItem" class="baseMapListItem">Satalite</li>
- 	<li id="terrainListItem" class="baseMapListItem">Terrain</li>		
+ 	<li id="sataliteListItem" class="baseMapListItem" onClick="clickedSettingsTab()">Satalite</li>
+ 	<li id="terrainListItem" class="baseMapListItem" onClick="clickedSettingsTab()">Terrain</li>		
  </li>
-  <li id="clearAllLayersListItem"><a href="#"> Clear All Layers</a></li>
+  <li id="clearAllLayersListItem" onClick="clickedSettingsTab()"><a href="#"> Clear All Layers</a></li>
 
 </ul>
 
@@ -339,13 +362,16 @@ function searchMyNeighborhood(){
 <div id ="container" class="container-fluid">
   <div id = "layerGroupContainer">
    <ul class="list-group" id="addLayerUL">
-   <li style="cursor:pointer" class="list-group-item"><b>Layer Search</b><input type="text" id="layerSearch" placeholder="Layer Name"><button id="layerSearchButton">Add Layer</button></li>
+   <li style="cursor:pointer; background:#aaaaaa" class="list-group-item"><b>Layer Search</b><br><input type="text" id="layerSearch" placeholder="Layer Name"><button id="layerSearchButton">Add Layer</button></li>
    </ul>
    
    <div style="cursor:pointer" class="btn-group" id="allLayersLabel">
    
    </div>
+   <div id = "foldersContentWrapper">
+	
 	<div id ="foldersContent">
+	</div>
 	</div>
 
     </div>

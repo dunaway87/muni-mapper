@@ -45,6 +45,12 @@ function addBaseMap(mapboxID){
 var layers = new Array();
 
 function manageLayer(layername){
+	
+	if($( '#'+layername+'Toggler' ).length && !$('#'+layername+'Toggler').is(":checked") && !dontRemoveLegend){
+		$('#'+layername+'Legend').remove();
+		return;
+	}
+	
 	removeGeoJson();
 	removePopup();
 	
@@ -58,7 +64,9 @@ function manageLayer(layername){
 					"color":"#333333",
 					"font-weight":"normal"
 				});
-				$('#'+layername+'Legend').remove();
+				if(!dontRemoveLegend){
+					$('#'+layername+'Legend').remove();
+				}
 				removeLayer(layers[i], i);
 				hasLayer = true;
 				$
@@ -74,8 +82,9 @@ function manageLayer(layername){
 		    	"color":"#000000",
 		    	"font-weight":"bold"
 			});
-			$('#legends').append('<div id="'+layername+'Legend" class="legend"><b>'+layername.replace(/_/g," ")+'</b><br><img src="http://www.mountainhouseproject.com/legend/'+layername+'" alt="some_text"><div>');
-			
+			if(!dontRemoveLegend){
+				$('#legends').append('<div id="'+layername+'Legend" class="legend"><b>'+layername.replace(/_/g," ")+'</b><span class="glyphicon glyphicon-remove-circle x-glyph" onClick="manageLayer(\''+layername+'\')"></span><span class ="toggle-checkbox" onClick="toggleLayer(\''+layername+'\')"><input id="'+layername+'Toggler" type = "checkbox" checked></span><br><img src="http://www.mountainhouseproject.com/legend/'+layername+'" alt="some_text"><div>');
+			}
 			addLayerToArray(layername);
 		}
 		updateURL();

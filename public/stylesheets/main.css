@@ -37,7 +37,9 @@ padding:6px;
 body.mapFullPage{
 	overflow:hidden;
 }
-
+body{
+	height:100%;
+}
 #wrapper{
 	margin-top:51px;
 	height:calc(100% - 51px);
@@ -170,10 +172,13 @@ body.mapFullPage{
 	right:15px;
 	width:258px;
 	position:absolute;
+
 	
 	margin-top:307px;
 	
 	min-height:calc(100% - 350px);
+	
+	
 }
 #legendsBox{
 	z-index:90;
@@ -260,15 +265,62 @@ margin-top: 50px;
 	overflow:hidden
 }
 
+#home-screen{
+	width:100%;
+	
+}
 
-.business-header{
-	height: 400px;
-	background: url(http://placehold.it/1920x400) center center no-repeat;
-	background-size: cover;
+.home-wrapper{
+	postition:relative;
+	margin-left:auto;
+	margin-right:auto;
+	width:100%;
+	height:40%;
+	margin-top:5%;
+	background-color:#cccccc;
+	
 }
 
 
 
+#alaska-map {
+	height:200px;
+	width:200px;
+}
+
+#header-pic{
+	height:90px;
+	width:90px;
+	postition:relative;
+	margin-top:30px;
+	margin-left:400px;
+}
+
+h1{
+	position:absolute;
+	margin-left:500px;
+	margin-top:40px;
+}
+
+h2{
+	position:absolute;
+	margin-left:500px;
+	margin-top:70px;
+	font-size:36px;
+}
+
+
+.nav-container{
+	position:absolute;
+	width:1000px;
+	margin-left:800px;
+	margin-top: 60px;
+	
+}
+
+a{
+	color:black;
+}
 
 
 

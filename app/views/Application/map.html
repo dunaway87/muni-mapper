@@ -2,6 +2,8 @@
   
 <html>
 <head>
+
+
   <link rel ="stylesheet" href="public/stylesheets/main.css"/>
   <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
     <script src="//code.jquery.com/jquery-1.9.1.js"></script>
@@ -21,6 +23,8 @@
     <script src="//code.jquery.com/jquery-1.9.1.js"></script>
   <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
   
+
+
   
  <script type="text/javascript">
  var folderDivs = new Array();
@@ -74,6 +78,29 @@
 		dontRemoveLegend = false;
 	}
 $(document).ready(function (){
+	getInternetExplorerVersion();
+	function getInternetExplorerVersion(){
+	
+	  console.log('ie version:');
+	  console.log( navigator );
+	  if(navigator.vendor == 'Apple Computer, Inc.'){
+		  console.log('haha');
+		  $('body').css('min-height','700px');
+		  $('body').css('height','700px');
+
+		  $('#wrapper').css('height','700px');
+		  $('#wrapper').css('height','700px');
+		  
+		  $('#legendsWrapper').css('height','350px');
+
+	} else  if(navigator.vendor != 'Google Inc.' && navigator.userAgent.indexOf('Firefox')==-1){
+	  	$('#legendsWrapper').css('height','calc(100% - 350px)');
+	 	 $('#legendsWrapper').css('margin-top', '327px');
+	  }
+	 
+	}
+	
+	
 	
 	
 	$('#searchTab').click(function(){

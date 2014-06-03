@@ -22,6 +22,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 
+import jobs.DailyCrime;
+
+import org.jdom.adapters.CrimsonDOMAdapter;
+
 import myNeighborhood.DistanceFinder;
 import myNeighborhood.MyNeighborhood;
 import myNeighborhood.ParcelCoverages;
@@ -33,7 +37,9 @@ import com.google.gson.JsonPrimitive;
 
 public class Application extends Controller {
 	public static void test(){
-		render();
+		
+		renderText(DailyCrime.getYesterday());
+		
 	}
 	
 	public static void muniHome(){

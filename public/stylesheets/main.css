@@ -266,8 +266,12 @@ margin-top: 50px;
 }
 
 #home-screen{
+	position:relative;
 	width:100%;
-	
+	height:30%;
+	background-color:#00a67c;
+	margin-right:auto;
+	margin-left:auto;
 }
 
 .home-wrapper{
@@ -277,7 +281,8 @@ margin-top: 50px;
 	width:100%;
 	height:40%;
 	margin-top:5%;
-	background-color:#cccccc;
+	
+
 	
 }
 
@@ -292,7 +297,7 @@ margin-top: 50px;
 	height:90px;
 	width:90px;
 	postition:relative;
-	margin-top:30px;
+	margin-top:10px;
 	margin-left:400px;
 }
 
@@ -300,13 +305,6 @@ h1{
 	position:absolute;
 	margin-left:500px;
 	margin-top:40px;
-}
-
-h2{
-	position:absolute;
-	margin-left:500px;
-	margin-top:70px;
-	font-size:36px;
 }
 
 
@@ -320,8 +318,17 @@ h2{
 
 a{
 	color:black;
+	font-size: 20px;
 }
 
+.title{
+	width:800px;
+	position:absolute;
+	margin-top:-10px;
+}
 
-
+.container{
+	width:40%;
+	float:left;
+}
 

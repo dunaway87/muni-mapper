@@ -1,3 +1,4 @@
+
 .x-glyph{
 	float:right;
 	margin-top:2px;
@@ -9,7 +10,7 @@
 }
 .layerItem{
 	box-shadow: 3px 3px 1px #222222;
-	
+	z-index:95;
 }
 
 .myNeighborhoodTable
@@ -156,11 +157,19 @@ body{
 		  color:#999;
 }
 .my-btn{
+	background:black;
+	color:#eeeeee;
 	font-weight:bold;
 	font-size:18px;
 	padding:3px;
 	width:258px;
-	background-color:#cccccc;
+	
+	
+	
+	border-top:5px;
+	border-bottom:5px;	
+	border-style:solid;
+	border-color:black;
 	
 }
 #legendsHeader{
@@ -174,9 +183,9 @@ body{
 	position:absolute;
 
 	
-	margin-top:307px;
+	margin-top:334px;
 	
-	min-height:calc(100% - 350px);
+	min-height:calc(100% - 377px);
 	
 	
 }

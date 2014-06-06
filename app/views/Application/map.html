@@ -32,7 +32,7 @@
  function folderClick(folderName){
 	 if($("#"+folderName).is(":visible")){
 		 
-		 $("#"+folderName+"Button").css("background-color", "#cccccc");
+		 $("#"+folderName+"Button").css("background-color", "black");
 		 
 	 	$("#"+folderName).toggle();
 	 	
@@ -43,7 +43,7 @@
 	 		console.log(currentFolderName);
 	 		if($("#"+currentFolderName).is(":visible")){
 	 			$("#"+currentFolderName).toggle();
-	 			$("#"+currentFolderName+"Button").css("background-color", "#cccccc");
+	 			$("#"+currentFolderName+"Button").css("background-color", "black");
 	 			
 	 		} 
 	 	}
@@ -126,7 +126,7 @@ $.get("/getLayers").done(function(dataSTR){
 	 	  
 	 	   var obj = data[key];
 	 	   
-	 	   var foldersContent = '<ul id = "'+folderName+'" class="folderContent" onMouseOut="folderClick(\''+folderName+'\')" onMouseOver="folderClick(\''+folderName+'\')" style = "display: none; margin-top:'+folderOffset*35+'px">';
+	 	   var foldersContent = '<ul id = "'+folderName+'" class="folderContent" onMouseOut="folderClick(\''+folderName+'\')" onMouseOver="folderClick(\''+folderName+'\')" style = "display: none; margin-top:'+folderOffset*38+'px">';
 	 	   
 	 	   
 	 	   

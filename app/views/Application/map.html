@@ -32,7 +32,7 @@
  function folderClick(folderName){
 	 if($("#"+folderName).is(":visible")){
 		 
-		 $("#"+folderName+"Button").css("background-color", "black");
+		 $("#"+folderName+"Button").css("background", "#E0E0E0");
 		 
 	 	$("#"+folderName).toggle();
 	 	
@@ -43,13 +43,13 @@
 	 		console.log(currentFolderName);
 	 		if($("#"+currentFolderName).is(":visible")){
 	 			$("#"+currentFolderName).toggle();
-	 			$("#"+currentFolderName+"Button").css("background-color", "black");
+	 			$("#"+currentFolderName+"Button").css("background", "#E0E0E0");
 	 			
 	 		} 
 	 	}
 
 	 	$("#"+folderName).toggle();
-		 $("#"+folderName+"Button").css("background-color", "#848482");
+		 $("#"+folderName+"Button").css("background", "#cccccc");
 
 	 }
 	 	
@@ -112,6 +112,9 @@ $('#layersTab').click(function(){
 });	
 
 
+
+
+
 $.get("/getLayers").done(function(dataSTR){
 	var data = jQuery.parseJSON(dataSTR);
  	console.log(data);
@@ -140,7 +143,7 @@ $.get("/getLayers").done(function(dataSTR){
  	
  	
  	
- 	$('#allLayersLabel').append(folderHtml);
+ 	$('#allLayersLabel').append(folderHtml); 
 	
 	$('#layerSearch').autocomplete({
 	    source: function( request, response ) {
@@ -389,7 +392,7 @@ function searchMyNeighborhood(){
 <div id ="container" class="container-fluid">
   <div id = "layerGroupContainer">
    <ul class="list-group" id="addLayerUL">
-   <li style="cursor:pointer; background:#aaaaaa" class="list-group-item"><b>Layer Search</b><br><input type="text" id="layerSearch" placeholder="Layer Name"><button id="layerSearchButton">Add Layer</button></li>
+   <li style="cursor:pointer; background:#aaaaaa"  class="list-group-item addLayerContainer"><b>Layer Search</b><br><input type="text" id="layerSearch" class ="form-control" placeholder="Layer Name"><button id="layerSearchButton" class = "btn btn-default">Add Layer</button></li>
    </ul>
    
    <div style="cursor:pointer" class="btn-group" id="allLayersLabel">

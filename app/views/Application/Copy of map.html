@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+  
+<html>
+<head>
+
+
+  <link rel ="stylesheet" href="public/stylesheets/main.css"/>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script src="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js?"></script>
+ <link rel="stylesheet" href="/muni/public/stylesheets/leaflet-0.7.1.css" />
+    <script src="/muni/public/javascripts/muni-mapper.js" type="text/javascript"></script>
+    <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js?2.1.3"></script>
+
+        <script src="/muni/public/javascripts/piecharts.js" type="text/javascript"></script>
+            <script src="/muni/public/javascripts/barcharts.js" type="text/javascript"></script>
+  
+  
+    <script src="//code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  
+
+
+  
+ <script type="text/javascript">
+ var folderDivs = new Array();
+
+ function folderClick(folderName){
+	 if($("#"+folderName).is(":visible")){
+		 
+		 $("#"+folderName+"Button").css("background", "#E0E0E0");
+		 
+	 	$("#"+folderName).toggle();
+	 	
+	 	
+	 } else {
+	 	for(var i =0; i<folderDivs.length;i++){
+	 		var currentFolderName = folderDivs[i];
+	 		console.log(currentFolderName);
+	 		if($("#"+currentFolderName).is(":visible")){
+	 			$("#"+currentFolderName).toggle();
+	 			$("#"+currentFolderName+"Button").css("background", "#E0E0E0");
+	 			
+	 		} 
+	 	}
+
+	 	$("#"+folderName).toggle();
+		 $("#"+folderName+"Button").css("background", "#cccccc");
+
+	 }
+	 	
+ }
+ 
+
+ 
+ function clickedSettingsTab(){
+		
+		$("#settingsList").slideToggle('fast');
+		console.log($("#settingsTab").css( "background-color" ));
+		if($("#settingsTab").css( "background-color" ) == "rgba(0, 0, 0, 0)" || $("#settingsTab").css( "background-color" ) == "rgb(34, 34, 34)"){
+			$("#settingsTab").css("background-color", "#999");
+			$("#settingsTab").css("color", "#333");
+		} else {
+			$("#settingsTab").css("background-color", "#222");
+			$("#settingsTab").css("color", "#999");
+		}
+	
+}
+ var dontRemoveLegend = false;
+ function toggleLayer(layerToToggle){
+	 	console.log(layerToToggle);
+	 	dontRemoveLegend = true;
+		manageLayer(layerToToggle);		
+		dontRemoveLegend = false;
+	}
+$(document).ready(function (){
+	getInternetExplorerVersion();
+	function getInternetExplorerVersion(){
+	
+	  console.log('ie version:');
+	  console.log( navigator );
+	  if(navigator.vendor == 'Apple Computer, Inc.'){
+		  console.log('haha');
+		  $('body').css('min-height','700px');
+		  $('body').css('height','700px');
+
+		  $('#wrapper').css('height','700px');
+		  $('#wrapper').css('height','700px');
+		  
+		  $('#legendsWrapper').css('height','350px');
+
+	} else  if(navigator.vendor != 'Google Inc.' && navigator.userAgent.indexOf('Firefox')==-1){
+	  	$('#legendsWrapper').css('height','calc(100% - 350px)');
+	 	 $('#legendsWrapper').css('margin-top', '327px');
+	  }
+	 
+	}
+	
+	
+	
+	
+	$('#searchTab').click(function(){
+		$('.searchContainer').slideToggle('fast');
+		$('#layerGroupContainer').slideToggle('slow');
+	});
+$('#layersTab').click(function(){
+	$('#layerGroupContainer').toggle();
+});	
+
+
+<<<<<<< HEAD
+$.get("/muni/getLayers").done(function(dataSTR){
+=======
+
+
+
+$.get("/getLayers").done(function(dataSTR){
+>>>>>>> branch 'master' of https://github.com/dunaway87/muni-mapper.git
+	var data = jQuery.parseJSON(dataSTR);
+ 	console.log(data);
+	var folderHtml ='';
+	var folderOffset = 0;
+ 	for (var key in data) {
+ 		var folderName =key.replace(' ', '')+'Folder';
+ 			console.log(folderName);
+ 			folderHtml = folderHtml+'<button type = "button" id="'+folderName+'Button" class="my-btn" onMouseOut="folderClick(\''+folderName+'\')" onMouseOver="folderClick(\''+folderName+'\')">'+key+' </button><br> ';
+ 		
+ 			folderDivs.push(folderName);
+	 	  
+	 	   var obj = data[key];
+	 	   
+	 	   var foldersContent = '<ul id = "'+folderName+'" class="folderContent" onMouseOut="folderClick(\''+folderName+'\')" onMouseOver="folderClick(\''+folderName+'\')" style = "display: none; margin-top:'+folderOffset*35+'px">';
+	 	   
+	 	   
+	 	   
+ 	    for (var prop in obj) { 
+			foldersContent = foldersContent+'<li id="'+obj[prop]+'"class="list-group-item layerItem" style = "background-color:#cccccc; margin-left:40px; cursor:pointer" onMouseOut="$(\'#'+obj[prop]+'\').css(\'font-weight\', \'normal\')" onMouseOver="$(\'#'+obj[prop]+'\').css(\'font-weight\', \'bold\')" onClick="manageLayer(\''+obj[prop]+'\')">'+obj[prop].replace(/_/g,' ')+'</li>';
+ 	      }  
+ 	    foldersContent = foldersContent +'</ul>';
+ 	   	$('#foldersContent').append(foldersContent);
+ 	   	folderOffset++;
+ 	}
+ 	
+ 	
+ 	
+ 	$('#allLayersLabel').append(folderHtml); 
+	
+	$('#layerSearch').autocomplete({
+	    source: function( request, response ) {
+	        $.ajax({
+	          url: "/muni/layerSearch",
+	          data: {
+	            name: request.term
+	          },
+	          success: function( data ) {
+	        	  data = JSON.parse(data);
+	            response( $.map( data.layers, function( item ) {
+	              return {
+	                label: item.name,
+	                value: item.name,
+	              }
+	            }));
+	          }
+	        });
+	      },
+	     
+	});
+	$('#layerSearchButton').click(function(){
+		var enteredLayer = $('#layerSearch').val();
+		
+		$.get("/muni/validateLayer?name="+enteredLayer).done(function(data){
+			if(data == 'true'){
+				manageLayer($('#layerSearch').val().replace(" ","_"));
+				$('#layerSearch').val('');
+			} else {
+				
+			}
+		});
+		
+	});
+
+	
+	
+$("#settingsTab").click(function(){
+	clickedSettingsTab();
+	
+});
+
+
+
+
+	$("#sataliteListItem").click(function(){
+		$("#sataliteListItem").addClass("baseMapItemClicked");
+		$("#terrainListItem").removeClass("baseMapItemClicked");
+		addBaseMap('dunaway87.hffcoej7');
+	});
+	$("#terrainListItem").click(function(){
+		$("#terrainListItem").addClass("baseMapItemClicked");
+		$("#sataliteListItem").removeClass("baseMapItemClicked");
+		addBaseMap('dunaway87.hff94j6p');
+	});
+
+	$("#clearAllLayersListItem").click(function(){
+		console.log(layers);
+		var length = layers.length;
+		for(var i=0; i < length; i++){
+			console.log(layers[0].layer);
+			manageLayer(layers[0].layerName);
+		}
+		layers = new Array();
+		
+		
+
+		});
+	console.log(layerNamesInit);
+	console.log("ahsdljkhsdjkl;fhasjkld");
+	
+	for(var i = 0; i < layerNamesInit.length;i++){
+		if(layerNamesInit[i] != ""){
+			layername = layerNamesInit[i];
+			$("#"+layername).css({
+				 "background-color":"#999999",
+		       "border-style":"outset",
+		       "border-color":"#707373",
+		    	"color":"#000000",
+		    	"font-weight":"bold"
+			});
+			$('#legends').append('<div id="'+layername+'Legend" class="legend"><b>'+layername.replace(/_/g," ")+'</b><span class="glyphicon glyphicon-remove-circle x-glyph" onClick="manageLayer(\''+layername+'\')"></span><span class ="toggle-checkbox" onClick="toggleLayer(\''+layername+'\')"><input id="'+layername+'Toggler" type = "checkbox" checked></span><br><img src="http://www.mountainhouseproject.com/legend/'+layername+'" alt="some_text"><div>');
+			
+			addLayerToArray(layername);
+		}
+		}
+	
+	});
+
+
+
+
+$('#addressSearchButton').click(function(){
+		console.log(addresses);
+	 	var addressName = $('#address').val();
+	 	foundIt=false;
+	 	console.log(addressName);
+	 	for(var i = 0; i < addresses.length; i ++){
+	 		
+ 			console.log('typed addess');
+ 			console.log(addressName);
+ 			console.log('address option');
+ 			console.log(addresses[i].address);
+	 		
+	 		if(addresses[i].address == addressName){
+	 			changeAddress(addresses[i]);
+	 			foundIt=true;
+	 			break;
+	 		}
+	 		
+	 	}
+	 	if(foundIt==false){
+			changeAddress(addresses[0]);
+			$('#address').val(addresses[0].address);
+			foundIt=false;
+		}
+	
+});
+
+$('#ownerSearchButton').click(function(){
+	console.log(owners);
+ 	var ownerName = $('#owner').val();
+ 	console.log(ownerName);
+ 	var foundIt = false;
+ 	for(var i = 0; i < owners.length; i ++){
+ 		
+			console.log('typed addess');
+			console.log(ownerName);
+			console.log('address option');
+			console.log(owners[i].owner);
+ 		
+ 		if(owners[i].owner == ownerName){
+ 			changeAddress(owners[i]);
+ 			foundIt=true;
+ 			break;
+ 		}
+ 	}
+	if(foundIt==false){
+		changeAddress(owners[0]);
+		$('#owner').val(owners[0].owner);
+		foundIt=false;
+	}
+
+});
+
+
+function changeAddress(address){
+ 	var foundIt = false;
+
+	map.panTo(L.latLng(address.lat,address.lon));
+	map.setZoom(17);
+	console.log(map.getSize().y);
+	clickData= new Object();
+	clickData = {
+			bbox:map.getBounds().toBBoxString(), 
+			epsg:4326, x:map.getSize().x/2, 
+			y:map.getSize().y/2, 
+			width:map.getSize().x, 
+			height:map.getSize().y, 
+			latlng:map.getCenter(),
+			zoom:map.getZoom()
+			};
+	console.log(clickData);
+	
+	var addressPopup = L.popup();
+	addressPopup.setLatLng(L.latLng(address.lat,address.lon)).setContent("Address: "+address.address+" <br>Owner: "+address.owner+"<br><br><div style='cursor:pointer' onClick='searchMyNeighborhood()'>My Neighborhood <span class='glyphicon glyphicon-home'></span></div>'").openOn(map);
+}
+ });
+
+function searchMyNeighborhood(){
+	neighborhoodClicked=true;
+	addPopUp(clickData.bbox, clickData.epsg,clickData.x, clickData.y, clickData.width, clickData.height, clickData.latlng);
+	neighborhoodClicked=false;
+};
+
+</script>
+
+
+</head>
+	<input type="number" id="zoomLat" style="display:none" value=${zoomLat}>
+	<input type="number" id="zoomLon" style="display:none" value=${zoomLon}>
+	<input type="number" id="zoomLevel" style="display:none" value=${zoomLevel}>
+	<input type="text" id="layerNames" style="display:none" value=${layerNames}>
+<header>
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Anchorage Municipal Maps</a>
+        </div>
+        <div class="navbar-collapse collapse">
+        	<div class = "navbar-form navbar-left" role= "form">
+        		<div class = "form-group">
+        			<input type="text"  class ="form-control" id="address" placeholder="address"/>
+	   		        <button id="addressSearchButton" type="submit" class = "btn btn-default"><span class = "glyphicon glyphicon-search"></span></button>
+        		</div>
+        		<div class = "form-group">
+        		  	<input type="text"  class ="form-control" id="owner" placeholder="Parcel Owner"/>
+	       	      	<button id="ownerSearchButton" class = "btn btn-default" type="submit"><span class = "glyphicon glyphicon-search"></span></button>
+        		</div>
+        	</div>
+       <ul class="nav navbar-nav navbar-right">
+       	 <li id="neighborhoodLI">
+       	 	<a href="#" id ="neighborhoodTab">
+       	 		<span id = "neighborboodTabLabel">My Neighboorhood</span>
+       	 		<span class= "glyphicon glyphicon-home"></span>
+       	 	</a>
+       	 </li>	   
+      	 <li>
+        	<a href="#" id ="layersTab">
+            	<span id ="layersTabLabel">Layers</span>
+            	<span class ="glyphicon glyphicon-picture"></span>
+           </a>
+         </li>          
+            <li class ="divider"></li>
+            <li><a id="settingsTab">
+           		 <span id ="settingsTabLabel">Settings</span>
+            	 <span class="glyphicon glyphicon-cog"></span></a>
+            </li>	
+           <li class ="divider"></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+</header>
+<body>
+<div id="settingsList" >
+
+<ul class="nav nav-list">
+  <li class="active" id="baseMapList">
+ 	<a href="#"> Base Map</a>
+ 	<li id="sataliteListItem" class="baseMapListItem" onClick="clickedSettingsTab()">Satalite</li>
+ 	<li id="terrainListItem" class="baseMapListItem" onClick="clickedSettingsTab()">Terrain</li>		
+ </li>
+  <li id="clearAllLayersListItem" onClick="clickedSettingsTab()"><a href="#"> Clear All Layers</a></li>
+
+</ul>
+
+</div>
+<div id ="wrapper">
+<div id ="container" class="container-fluid">
+  <div id = "layerGroupContainer">
+   <ul class="list-group" id="addLayerUL">
+   <li style="cursor:pointer; background:#aaaaaa"  class="list-group-item addLayerContainer"><b>Layer Search</b><br><input type="text" id="layerSearch" class ="form-control" placeholder="Layer Name"><button id="layerSearchButton" class = "btn btn-default">Add Layer</button></li>
+   </ul>
+   
+   <div style="cursor:pointer" class="btn-group" id="allLayersLabel">
+   
+   </div>
+   <div id = "foldersContentWrapper">
+	
+	<div id ="foldersContent">
+	</div>
+	</div>
+
+    </div>
+	<div class ="modal fade in" id="myNeighborhood" tabindex= "-1" role = "dialog" aria-labelledby ="myNeighborhoodLabel"  aria-hidden="false" style="display:none">
+		<div class = "modal-content" id="modalContent">
+			<div class = "modal-header">
+				<button type="button" class ="close" data-dismiss ="modal" id="closeModel" aria-hidden="true">&times;</button>
+				<h4 class = "modal-title" id = "myNeighborhoodLabel"> My Neighborhood</h4>
+			
+				<ul class = "nav nav-tabs" id="tabContent">
+					<li class = "active"><a href="#landUse" data-toggle="tab">Land Use</a></li>
+					<li><a href ="#environment" data-toggle = "tab">Environment</a></li>
+					<li><a href ="#recreation" data-toggle="tab">Recreation</a></li>
+					<li><a href="#buildings" data-toggle= "tab">Buildings</a></li>
+					<li><a href = "#politcal" data-toggle = "tab">Political</a></li>
+					<li><a href = "#census" data-toggle = "tab">Census</a></li>
+				</ul>
+			</div>	
+			<div class = "modal-body">
+				<div class = "tab-content">
+				<div class = "tab-pane active" id = "landUse">
+						
+				</div>
+				<div class = "tab-pane" id = "environment">
+				</div>
+				
+				<div class = "tab-pane" id = "recreation">
+			
+				</div>
+				<div class = "tab-pane" id = "buildings">
+				</div>
+				<div class = "tab-pane" id = "politcal">
+				</div>
+				<div class = "tab-pane" id = "census">
+				
+				</div>
+				
+				</div>
+			
+		</div>
+
+			
+	</div>	
+</div>
+ 	
+	<div id ="legendsWrapper"> 
+    <div id="legendsBox">   
+   		 	<div id="legendsHeader">
+      		 	<b style ="padding-left:15px;">Legends</b> 
+      		 	<span id="legendsDownArrow" class="glyphicon glyphicon-chevron-down" style="float: right; padding:5px"></span>
+      		 	<span id="legendsUpArrow" class="glyphicon glyphicon-chevron-up" style="float: right; padding:5px; display:none"></span>
+     		</div>
+    		<div id="legends">
+    			
+    		</div>  
+    		</div>  
+    	</div>
+    <div id= "map">
+        <script type='text/javascript'>
+       loadMap();
+        </script>
+    	
+    
+    </div>
+    </div>
+   </div>
+ 
+
+        <script src="/muni/public/javascripts/mapClicks.js" type="text/javascript"></script>
+        <script src="/muni/public/javascripts/mapPans.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+$('#allLayersAndList').hover(function(){
+	$('#folderList').toggle()
+	
+	});
+
+var neighborhoodClicked = false;
+$('#neighborhoodLI').click(function(){
+
+		clickNeighborhoodButton();
+	});
+$('#closeModelButton').click(function(){
+	
+	closeModel();
+});
+$('#closeModel').click(function(){
+	
+	closeModel();
+});
+function closeModel(){
+		$('#myNeighborhood').toggle();
+		 $('#map').css({'cursor':'default'});
+	     $('#myNeighborhood').css({'cursor':'default'});
+			$("#neighborhoodLI").css("background-color", "#222");
+			$("#neighborboodTabLabel").css("color", "#999");
+			$(".glyphicon-home").css("color", "#999");
+	     $('.tab-pane').empty();
+	     
+/* 	     document.getElementById("landUse").className = "tab-pane-active";
+
+	     
+	     document.getElementById("environment").className = "tab-pane";
+	     document.getElementById("recreation").className = "tab-pane";
+	     document.getElementById("buildings").className = "tab-pane";
+	     document.getElementById("politcal").className = "tab-pane";
+	     document.getElementById("census").className = "tab-pane";
+	     
+	     
+	     
+	      */
+	     
+	     
+			 
+}
+	function clickNeighborhoodButton(){
+		if($("#neighborhoodLI").css( "background-color" ) == "rgba(0, 0, 0, 0)" || $("#neighborhoodLI").css( "background-color" ) == "rgb(34, 34, 34)"){
+			$("#neighborhoodLI").css("background-color", "#999");
+			$("#neighborboodTabLabel").css("color", "#333");
+			$(".glyphicon-home").css("color", "#333");
+			neighborhoodClicked=true;
+			
+		} else {
+			$("#neighborhoodLI").css("background-color", "#222");
+			$("#neighborboodTabLabel").css("color", "#999");
+			$(".glyphicon-home").css("color", "#999");
+			neighborhoodClicked=false;
+		}
+	}
+$('#address').autocomplete({
+	autoFocus: true,
+    source: function( request, response ) {
+        $.ajax({
+          url: "/muni/addressSearch",
+          data: {
+            address: request.term
+          },
+          success: function( data ) {
+        	  addresses = data.addresses;
+            response( $.map( data.addresses, function( item ) {
+              return {
+                label: item.address,
+                value: item.address,
+              }
+            }));
+          }
+        });
+      },
+      minLength: 2,
+});
+	var owners;
+$('#owner').autocomplete({
+	autoFocus: true,
+    source: function( request, response ) {
+        $.ajax({
+          url: "/muni/ownerSearch",
+          data: {
+            ownerName: request.term
+          },
+          success: function( data ) {
+        	  owners = data.owners;
+            response( $.map( data.owners, function( item ) {
+              return {
+                label: item.owner,
+                value: item.owner,
+              }
+            }));
+          }
+        });
+      },
+      minLength: 2,
+});
+
+
+$('#legendsHeader').click(function(){
+	$('#legends').toggle();
+	$('#legendsDownArrow').toggle();
+	$('#legendsUpArrow').toggle();
+	
+});
+changeWrapperMarginTop();
+
+</script>
+</body>
+</html>

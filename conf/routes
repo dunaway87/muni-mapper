@@ -28,10 +28,36 @@ GET		/ownerSearch					Application.ownerSearch
 GET		/test									Application.test
 
 
+GET  	/muni/muniHome								Application.muniHome
+
+GET     /muni/                                       Application.map
+
+GET		/muni/getLayers								Application.getLayers
+
+GET		/muni/getLayersGeoserver						Application.getLayersGeoserver
+
+GET		/muni/onClick								Application.onClick
+
+GET		/muni/legend/{layerName}						Application.legend
+
+GET		/muni/addressSearch							Application.addressSearch
+
+GET		/muni/layerSearch							Application.layerSearch
+
+GET		/muni/validateLayer							Application.validateLayer
+
+GET		/muni/myNeighborhood							Application.myNeighborhood
+
+GET		/muni/ownerSearch					Application.ownerSearch
+
+GET		/muni/test									Application.test
+
+
 # Ignore favicon requests
 GET     /favicon.ico                            404
 # Map static resources from the /app/public folder to the /public path
 GET     /public/                                staticDir:public
+GET		/muni/public							staticDir:public
 GET     /dist/									staticDir:public/dist
 # Catch all
 *       /{controller}/{action}                  {controller}.{action}

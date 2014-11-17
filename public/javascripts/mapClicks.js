@@ -42,7 +42,7 @@ function addPopUp(bbox, epsg, x, y, width, height, latlng){
 		$.get(
 
 
-				"/onClick?bbox="+bbox+"&epsg="+epsg+"&layers="+layerNames+"&x="+x+"&y="+y+"&height="+height+"&width="+width,function(result){
+				"/muni/onClick?bbox="+bbox+"&epsg="+epsg+"&layers="+layerNames+"&x="+x+"&y="+y+"&height="+height+"&width="+width,function(result){
 					if(justDoubleClicked==false){
 						result = JSON.parse(result);
 						var popupHtml = result.html;
@@ -122,7 +122,7 @@ function addPopUp(bbox, epsg, x, y, width, height, latlng){
 
 function appendToMyNeighborhood(layers,divToAppendTo,bbox, epsg, x, y, width, height, latlng){
 	console.log("start");
-	$.get("/myNeighborhood?layers="+layers+"&bbox="+bbox+"&epsg="+epsg+"&x="+x+"&y="+y+"&height="+height+"&width="+width+"&lat="+latlng.lat+"&lon="+latlng.lng,function(result){
+	$.get("/muni/myNeighborhood?layers="+layers+"&bbox="+bbox+"&epsg="+epsg+"&x="+x+"&y="+y+"&height="+height+"&width="+width+"&lat="+latlng.lat+"&lon="+latlng.lng,function(result){
 		console.log(result);
 
 		var allLayers = jQuery.parseJSON(result);

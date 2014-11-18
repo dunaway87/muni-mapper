@@ -1618,3 +1618,267 @@ Caused by: org.postgresql.util.PSQLException: FATAL: password authentication fai
 	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:473)
 	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:161)
 	... 1 more
+22:39:35,837 ERROR ~ 
+
+@6k8j17h5b
+Internal Server Error (500) for request GET /muni/getLayers
+
+Execution exception (In /app/utils/DatabaseConnection.java around line 14)
+PSQLException occured : FATAL: password authentication failed for user "dunawayjenckes"
+
+play.exceptions.JavaExecutionException: FATAL: password authentication failed for user "dunawayjenckes"
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:231)
+	at Invocation.HTTP Request(Play!)
+Caused by: org.postgresql.util.PSQLException: FATAL: password authentication failed for user "dunawayjenckes"
+	at org.postgresql.core.v3.ConnectionFactoryImpl.doAuthentication(ConnectionFactoryImpl.java:291)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:108)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:66)
+	at org.postgresql.jdbc2.AbstractJdbc2Connection.<init>(AbstractJdbc2Connection.java:125)
+	at org.postgresql.jdbc3.AbstractJdbc3Connection.<init>(AbstractJdbc3Connection.java:30)
+	at org.postgresql.jdbc3.Jdbc3Connection.<init>(Jdbc3Connection.java:24)
+	at org.postgresql.Driver.makeConnection(Driver.java:393)
+	at org.postgresql.Driver.connect(Driver.java:267)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at utils.DatabaseConnection.getConnection(DatabaseConnection.java:14)
+	at geoserver.Layers.getJson(Layers.java:74)
+	at geoserver.Layers.getLayers(Layers.java:46)
+	at controllers.Application.getLayers(Application.java:98)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:548)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:502)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:478)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:473)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:161)
+	... 1 more
+22:42:30,737 ERROR ~ 
+
+@6k8j17h5c
+Internal Server Error (500) for request GET /muni/getLayers
+
+Execution exception (In /app/utils/DatabaseConnection.java around line 14)
+PSQLException occured : FATAL: password authentication failed for user "dunawayjenckes"
+
+play.exceptions.JavaExecutionException: FATAL: password authentication failed for user "dunawayjenckes"
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:231)
+	at Invocation.HTTP Request(Play!)
+Caused by: org.postgresql.util.PSQLException: FATAL: password authentication failed for user "dunawayjenckes"
+	at org.postgresql.core.v3.ConnectionFactoryImpl.doAuthentication(ConnectionFactoryImpl.java:291)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:108)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:66)
+	at org.postgresql.jdbc2.AbstractJdbc2Connection.<init>(AbstractJdbc2Connection.java:125)
+	at org.postgresql.jdbc3.AbstractJdbc3Connection.<init>(AbstractJdbc3Connection.java:30)
+	at org.postgresql.jdbc3.Jdbc3Connection.<init>(Jdbc3Connection.java:24)
+	at org.postgresql.Driver.makeConnection(Driver.java:393)
+	at org.postgresql.Driver.connect(Driver.java:267)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at utils.DatabaseConnection.getConnection(DatabaseConnection.java:14)
+	at geoserver.Layers.getJson(Layers.java:74)
+	at geoserver.Layers.getLayers(Layers.java:46)
+	at controllers.Application.getLayers(Application.java:98)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:548)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:502)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:478)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:473)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:161)
+	... 1 more
+22:42:48,098 ERROR ~ 
+
+@6k8j17h5d
+Internal Server Error (500) for request GET /muni/getLayers
+
+Execution exception (In /app/utils/DatabaseConnection.java around line 14)
+PSQLException occured : FATAL: password authentication failed for user "dunawayjenckes"
+
+play.exceptions.JavaExecutionException: FATAL: password authentication failed for user "dunawayjenckes"
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:231)
+	at Invocation.HTTP Request(Play!)
+Caused by: org.postgresql.util.PSQLException: FATAL: password authentication failed for user "dunawayjenckes"
+	at org.postgresql.core.v3.ConnectionFactoryImpl.doAuthentication(ConnectionFactoryImpl.java:291)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:108)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:66)
+	at org.postgresql.jdbc2.AbstractJdbc2Connection.<init>(AbstractJdbc2Connection.java:125)
+	at org.postgresql.jdbc3.AbstractJdbc3Connection.<init>(AbstractJdbc3Connection.java:30)
+	at org.postgresql.jdbc3.Jdbc3Connection.<init>(Jdbc3Connection.java:24)
+	at org.postgresql.Driver.makeConnection(Driver.java:393)
+	at org.postgresql.Driver.connect(Driver.java:267)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at utils.DatabaseConnection.getConnection(DatabaseConnection.java:14)
+	at geoserver.Layers.getJson(Layers.java:74)
+	at geoserver.Layers.getLayers(Layers.java:46)
+	at controllers.Application.getLayers(Application.java:98)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:548)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:502)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:478)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:473)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:161)
+	... 1 more
+22:43:13,270 ERROR ~ 
+
+@6k8j17h5e
+Internal Server Error (500) for request GET /muni/getLayers
+
+Execution exception (In /app/utils/DatabaseConnection.java around line 14)
+PSQLException occured : FATAL: password authentication failed for user "dunawayjenckes"
+
+play.exceptions.JavaExecutionException: FATAL: password authentication failed for user "dunawayjenckes"
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:231)
+	at Invocation.HTTP Request(Play!)
+Caused by: org.postgresql.util.PSQLException: FATAL: password authentication failed for user "dunawayjenckes"
+	at org.postgresql.core.v3.ConnectionFactoryImpl.doAuthentication(ConnectionFactoryImpl.java:291)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:108)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:66)
+	at org.postgresql.jdbc2.AbstractJdbc2Connection.<init>(AbstractJdbc2Connection.java:125)
+	at org.postgresql.jdbc3.AbstractJdbc3Connection.<init>(AbstractJdbc3Connection.java:30)
+	at org.postgresql.jdbc3.Jdbc3Connection.<init>(Jdbc3Connection.java:24)
+	at org.postgresql.Driver.makeConnection(Driver.java:393)
+	at org.postgresql.Driver.connect(Driver.java:267)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at utils.DatabaseConnection.getConnection(DatabaseConnection.java:14)
+	at geoserver.Layers.getJson(Layers.java:74)
+	at geoserver.Layers.getLayers(Layers.java:46)
+	at controllers.Application.getLayers(Application.java:98)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:548)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:502)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:478)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:473)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:161)
+	... 1 more
+22:43:29,524 ERROR ~ 
+
+@6k8j17h5f
+Internal Server Error (500) for request GET /muni/getLayers
+
+Execution exception (In /app/utils/DatabaseConnection.java around line 14)
+PSQLException occured : FATAL: password authentication failed for user "dunawayjenckes"
+
+play.exceptions.JavaExecutionException: FATAL: password authentication failed for user "dunawayjenckes"
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:231)
+	at Invocation.HTTP Request(Play!)
+Caused by: org.postgresql.util.PSQLException: FATAL: password authentication failed for user "dunawayjenckes"
+	at org.postgresql.core.v3.ConnectionFactoryImpl.doAuthentication(ConnectionFactoryImpl.java:291)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:108)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:66)
+	at org.postgresql.jdbc2.AbstractJdbc2Connection.<init>(AbstractJdbc2Connection.java:125)
+	at org.postgresql.jdbc3.AbstractJdbc3Connection.<init>(AbstractJdbc3Connection.java:30)
+	at org.postgresql.jdbc3.Jdbc3Connection.<init>(Jdbc3Connection.java:24)
+	at org.postgresql.Driver.makeConnection(Driver.java:393)
+	at org.postgresql.Driver.connect(Driver.java:267)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at utils.DatabaseConnection.getConnection(DatabaseConnection.java:14)
+	at geoserver.Layers.getJson(Layers.java:74)
+	at geoserver.Layers.getLayers(Layers.java:46)
+	at controllers.Application.getLayers(Application.java:98)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:548)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:502)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:478)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:473)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:161)
+	... 1 more
+22:43:33,818 INFO  ~ bbox 61.07854804406272,-150.55938720703125,61.22101590366108,-149.24102783203125
+22:43:33,820 INFO  ~ http://geoblaster.info:8080/geoserver/wms/wms?SERVICE=WMS&CRS=EPSG:4326&VERSION=1.3.0&REQUEST=GetFeatureInfo&EXCEPTIONS=JSON&BBOX=61.07854804406272,-150.55938720703125,61.22101590366108,-149.24102783203125&x=1640&y=178&INFO_FORMAT=application/json&LAYERS=&QUERY_LAYERS=&WIDTH=1920&HEIGHT=430
+22:43:34,090 INFO  ~ {"version":"1.3.0","exceptions":[{"code":"org.geoserver.wms.map.GetMapKvpRequestReader","locator":"noLocator","text":"No LAYERS has been requested"}]}
+22:43:34,091 INFO  ~ java.lang.NullPointerException
+22:43:35,217 ERROR ~ 
+
+@6k8j17h5g
+Internal Server Error (500) for request GET /muni/getLayers
+
+Execution exception (In /app/utils/DatabaseConnection.java around line 14)
+PSQLException occured : FATAL: password authentication failed for user "dunawayjenckes"
+
+play.exceptions.JavaExecutionException: FATAL: password authentication failed for user "dunawayjenckes"
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:231)
+	at Invocation.HTTP Request(Play!)
+Caused by: org.postgresql.util.PSQLException: FATAL: password authentication failed for user "dunawayjenckes"
+	at org.postgresql.core.v3.ConnectionFactoryImpl.doAuthentication(ConnectionFactoryImpl.java:291)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:108)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:66)
+	at org.postgresql.jdbc2.AbstractJdbc2Connection.<init>(AbstractJdbc2Connection.java:125)
+	at org.postgresql.jdbc3.AbstractJdbc3Connection.<init>(AbstractJdbc3Connection.java:30)
+	at org.postgresql.jdbc3.Jdbc3Connection.<init>(Jdbc3Connection.java:24)
+	at org.postgresql.Driver.makeConnection(Driver.java:393)
+	at org.postgresql.Driver.connect(Driver.java:267)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at utils.DatabaseConnection.getConnection(DatabaseConnection.java:14)
+	at geoserver.Layers.getJson(Layers.java:74)
+	at geoserver.Layers.getLayers(Layers.java:46)
+	at controllers.Application.getLayers(Application.java:98)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:548)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:502)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:478)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:473)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:161)
+	... 1 more
+22:46:34,465 INFO  ~ bbox 61.07854804406272,-150.55938720703125,61.22101590366108,-149.24102783203125
+22:46:34,467 INFO  ~ http://geoblaster.info:8080/geoserver/wms/wms?SERVICE=WMS&CRS=EPSG:4326&VERSION=1.3.0&REQUEST=GetFeatureInfo&EXCEPTIONS=JSON&BBOX=61.07854804406272,-150.55938720703125,61.22101590366108,-149.24102783203125&x=985&y=261&INFO_FORMAT=application/json&LAYERS=&QUERY_LAYERS=&WIDTH=1920&HEIGHT=430
+22:46:34,737 INFO  ~ {"version":"1.3.0","exceptions":[{"code":"org.geoserver.wms.map.GetMapKvpRequestReader","locator":"noLocator","text":"No LAYERS has been requested"}]}
+22:46:34,737 INFO  ~ java.lang.NullPointerException
+22:46:38,276 ERROR ~ 
+
+@6k8j17h5h
+Internal Server Error (500) for request GET /muni/getLayers
+
+Execution exception (In /app/utils/DatabaseConnection.java around line 14)
+PSQLException occured : FATAL: password authentication failed for user "dunawayjenckes"
+
+play.exceptions.JavaExecutionException: FATAL: password authentication failed for user "dunawayjenckes"
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:231)
+	at Invocation.HTTP Request(Play!)
+Caused by: org.postgresql.util.PSQLException: FATAL: password authentication failed for user "dunawayjenckes"
+	at org.postgresql.core.v3.ConnectionFactoryImpl.doAuthentication(ConnectionFactoryImpl.java:291)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:108)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:66)
+	at org.postgresql.jdbc2.AbstractJdbc2Connection.<init>(AbstractJdbc2Connection.java:125)
+	at org.postgresql.jdbc3.AbstractJdbc3Connection.<init>(AbstractJdbc3Connection.java:30)
+	at org.postgresql.jdbc3.Jdbc3Connection.<init>(Jdbc3Connection.java:24)
+	at org.postgresql.Driver.makeConnection(Driver.java:393)
+	at org.postgresql.Driver.connect(Driver.java:267)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at utils.DatabaseConnection.getConnection(DatabaseConnection.java:14)
+	at geoserver.Layers.getJson(Layers.java:74)
+	at geoserver.Layers.getLayers(Layers.java:46)
+	at controllers.Application.getLayers(Application.java:98)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:548)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:502)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:478)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:473)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:161)
+	... 1 more
+22:47:21,877 ERROR ~ 
+
+@6k8j17h5i
+Internal Server Error (500) for request GET /muni/getLayers
+
+Execution exception (In /app/utils/DatabaseConnection.java around line 14)
+PSQLException occured : FATAL: password authentication failed for user "dunawayjenckes"
+
+play.exceptions.JavaExecutionException: FATAL: password authentication failed for user "dunawayjenckes"
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:231)
+	at Invocation.HTTP Request(Play!)
+Caused by: org.postgresql.util.PSQLException: FATAL: password authentication failed for user "dunawayjenckes"
+	at org.postgresql.core.v3.ConnectionFactoryImpl.doAuthentication(ConnectionFactoryImpl.java:291)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:108)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:66)
+	at org.postgresql.jdbc2.AbstractJdbc2Connection.<init>(AbstractJdbc2Connection.java:125)
+	at org.postgresql.jdbc3.AbstractJdbc3Connection.<init>(AbstractJdbc3Connection.java:30)
+	at org.postgresql.jdbc3.Jdbc3Connection.<init>(Jdbc3Connection.java:24)
+	at org.postgresql.Driver.makeConnection(Driver.java:393)
+	at org.postgresql.Driver.connect(Driver.java:267)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at utils.DatabaseConnection.getConnection(DatabaseConnection.java:14)
+	at geoserver.Layers.getJson(Layers.java:74)
+	at geoserver.Layers.getLayers(Layers.java:46)
+	at controllers.Application.getLayers(Application.java:98)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:548)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:502)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:478)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:473)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:161)
+	... 1 more

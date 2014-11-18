@@ -1477,3 +1477,144 @@ Caused by: org.postgresql.util.PSQLException: FATAL: password authentication fai
 	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:473)
 	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:161)
 	... 1 more
+22:35:15,682 INFO  ~ Starting C:\projects\muni-mapper
+22:35:16,356 WARN  ~ You're running Play! in DEV mode
+22:35:16,439 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+22:35:29,090 WARN  ~ The path for a staticDir route must end with / (GET /muni/public -> staticDir:public)
+22:35:31,367 INFO  ~ Connected to jdbc:postgresql://www.geoblaster.info:5432/automated_shapefile_uploads
+22:35:31,557 INFO  ~ Hibernate Commons Annotations 3.2.0.Final
+22:35:31,562 INFO  ~ Hibernate 3.6.1.Final
+22:35:31,563 INFO  ~ hibernate.properties not found
+22:35:31,566 INFO  ~ Bytecode provider name : javassist
+22:35:31,570 INFO  ~ using JDK 1.4 java.sql.Timestamp handling
+22:35:31,636 INFO  ~ Hibernate EntityManager 3.6.0.Final
+22:35:31,708 INFO  ~ Binding entity from annotated class: models.Crime
+22:35:31,741 INFO  ~ Bind entity models.Crime on table Crime
+22:35:31,797 INFO  ~ Hibernate Validator not found: ignoring
+22:35:31,834 INFO  ~ Unable to find org.hibernate.search.event.FullTextIndexEventListener on the classpath. Hibernate Search is not enabled.
+22:35:31,838 INFO  ~ Initializing connection provider: org.hibernate.ejb.connection.InjectedDataSourceConnectionProvider
+22:35:31,852 INFO  ~ Using provided datasource
+22:35:31,860 INFO  ~ Database ->
+       name : PostgreSQL
+    version : 9.1.12
+      major : 9
+      minor : 1
+22:35:31,860 INFO  ~ Driver ->
+       name : PostgreSQL Native Driver
+    version : PostgreSQL 8.4 JDBC3 (build 701)
+      major : 8
+      minor : 4
+22:35:31,882 INFO  ~ Using dialect: org.hibernate.dialect.PostgreSQLDialect
+22:35:31,893 INFO  ~ Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+22:35:31,894 INFO  ~ Transaction strategy: org.hibernate.transaction.JDBCTransactionFactory
+22:35:31,895 INFO  ~ No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+22:35:31,895 INFO  ~ Automatic flush during beforeCompletion(): disabled
+22:35:31,895 INFO  ~ Automatic session close at end of transaction: disabled
+22:35:31,895 INFO  ~ JDBC batch size: 15
+22:35:31,895 INFO  ~ JDBC batch updates for versioned data: disabled
+22:35:31,896 INFO  ~ Scrollable result sets: enabled
+22:35:31,896 INFO  ~ JDBC3 getGeneratedKeys(): enabled
+22:35:31,896 INFO  ~ Connection release mode: auto
+22:35:31,896 INFO  ~ Default batch fetch size: 1
+22:35:31,896 INFO  ~ Generate SQL with comments: disabled
+22:35:31,896 INFO  ~ Order SQL updates by primary key: disabled
+22:35:31,896 INFO  ~ Order SQL inserts for batching: disabled
+22:35:31,896 INFO  ~ Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+22:35:31,898 INFO  ~ Using ASTQueryTranslatorFactory
+22:35:31,898 INFO  ~ Query language substitutions: {}
+22:35:31,898 INFO  ~ JPA-QL strict compliance: enabled
+22:35:31,898 INFO  ~ Second-level cache: enabled
+22:35:31,898 INFO  ~ Query cache: disabled
+22:35:31,898 INFO  ~ Cache region factory : org.hibernate.cache.impl.NoCachingRegionFactory
+22:35:31,899 INFO  ~ Optimize cache for minimal puts: disabled
+22:35:31,899 INFO  ~ Structured second-level cache entries: disabled
+22:35:31,903 INFO  ~ Statistics: disabled
+22:35:31,903 INFO  ~ Deleted entity synthetic identifier rollback: disabled
+22:35:31,904 INFO  ~ Default entity-mode: pojo
+22:35:31,904 INFO  ~ Named query checking : enabled
+22:35:31,904 INFO  ~ Check Nullability in Core (should be disabled when Bean Validation is on): enabled
+22:35:31,921 INFO  ~ building session factory
+22:35:31,926 INFO  ~ Type registration [materialized_blob] overrides previous : org.hibernate.type.MaterializedBlobType@59727dd3
+22:35:32,058 INFO  ~ Not binding factory to JNDI, no JNDI name configured
+22:35:32,063 INFO  ~ Running hbm2ddl schema update
+22:35:32,063 INFO  ~ fetching database metadata
+22:35:32,210 INFO  ~ updating schema
+22:35:33,249 INFO  ~ table found: public.crime
+22:35:33,249 INFO  ~ columns: [id, crime_type, lon, time, location, geom, lat]
+22:35:33,249 INFO  ~ foreign keys: []
+22:35:33,249 INFO  ~ indexes: [crime_pkey]
+22:35:33,250 INFO  ~ schema update complete
+22:35:33,300 INFO  ~ Application 'muni-mapper' is now started !
+22:35:41,216 INFO  ~ bbox 60.970441603933274,-150.63217163085935,61.32859842334997,-149.16755676269528
+22:35:41,294 INFO  ~ http://geoblaster.info:8080/geoserver/wms/wms?SERVICE=WMS&CRS=EPSG:4326&VERSION=1.3.0&REQUEST=GetFeatureInfo&EXCEPTIONS=JSON&BBOX=60.970441603933274,-150.63217163085935,61.32859842334997,-149.16755676269528&x=1805&y=779&INFO_FORMAT=application/json&LAYERS=&QUERY_LAYERS=&WIDTH=2133&HEIGHT=1081
+22:35:41,323 INFO  ~ Number of application's worked threads is 8
+22:35:41,645 INFO  ~ {"version":"1.3.0","exceptions":[{"code":"org.geoserver.wms.map.GetMapKvpRequestReader","locator":"noLocator","text":"No LAYERS has been requested"}]}
+22:35:41,645 INFO  ~ java.lang.NullPointerException
+22:37:30,942 INFO  ~ bbox 61.06991307984488,-150.63217163085935,61.22994011631385,-149.16755676269528
+22:37:30,944 INFO  ~ http://geoblaster.info:8080/geoserver/wms/wms?SERVICE=WMS&CRS=EPSG:4326&VERSION=1.3.0&REQUEST=GetFeatureInfo&EXCEPTIONS=JSON&BBOX=61.06991307984488,-150.63217163085935,61.22994011631385,-149.16755676269528&x=1308&y=209&INFO_FORMAT=application/json&LAYERS=&QUERY_LAYERS=&WIDTH=2133&HEIGHT=483
+22:37:31,219 INFO  ~ {"version":"1.3.0","exceptions":[{"code":"org.geoserver.wms.map.GetMapKvpRequestReader","locator":"noLocator","text":"No LAYERS has been requested"}]}
+22:37:31,219 INFO  ~ java.lang.NullPointerException
+22:37:35,047 ERROR ~ 
+
+@6k8j17h59
+Internal Server Error (500) for request GET /muni/getLayers
+
+Execution exception (In /app/utils/DatabaseConnection.java around line 14)
+PSQLException occured : FATAL: password authentication failed for user "dunawayjenckes"
+
+play.exceptions.JavaExecutionException: FATAL: password authentication failed for user "dunawayjenckes"
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:231)
+	at Invocation.HTTP Request(Play!)
+Caused by: org.postgresql.util.PSQLException: FATAL: password authentication failed for user "dunawayjenckes"
+	at org.postgresql.core.v3.ConnectionFactoryImpl.doAuthentication(ConnectionFactoryImpl.java:291)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:108)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:66)
+	at org.postgresql.jdbc2.AbstractJdbc2Connection.<init>(AbstractJdbc2Connection.java:125)
+	at org.postgresql.jdbc3.AbstractJdbc3Connection.<init>(AbstractJdbc3Connection.java:30)
+	at org.postgresql.jdbc3.Jdbc3Connection.<init>(Jdbc3Connection.java:24)
+	at org.postgresql.Driver.makeConnection(Driver.java:393)
+	at org.postgresql.Driver.connect(Driver.java:267)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at utils.DatabaseConnection.getConnection(DatabaseConnection.java:14)
+	at geoserver.Layers.getJson(Layers.java:74)
+	at geoserver.Layers.getLayers(Layers.java:46)
+	at controllers.Application.getLayers(Application.java:98)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:548)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:502)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:478)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:473)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:161)
+	... 1 more
+22:37:52,795 ERROR ~ 
+
+@6k8j17h5a
+Internal Server Error (500) for request GET /muni/getLayers
+
+Execution exception (In /app/utils/DatabaseConnection.java around line 14)
+PSQLException occured : FATAL: password authentication failed for user "dunawayjenckes"
+
+play.exceptions.JavaExecutionException: FATAL: password authentication failed for user "dunawayjenckes"
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:231)
+	at Invocation.HTTP Request(Play!)
+Caused by: org.postgresql.util.PSQLException: FATAL: password authentication failed for user "dunawayjenckes"
+	at org.postgresql.core.v3.ConnectionFactoryImpl.doAuthentication(ConnectionFactoryImpl.java:291)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:108)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:66)
+	at org.postgresql.jdbc2.AbstractJdbc2Connection.<init>(AbstractJdbc2Connection.java:125)
+	at org.postgresql.jdbc3.AbstractJdbc3Connection.<init>(AbstractJdbc3Connection.java:30)
+	at org.postgresql.jdbc3.Jdbc3Connection.<init>(Jdbc3Connection.java:24)
+	at org.postgresql.Driver.makeConnection(Driver.java:393)
+	at org.postgresql.Driver.connect(Driver.java:267)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at utils.DatabaseConnection.getConnection(DatabaseConnection.java:14)
+	at geoserver.Layers.getJson(Layers.java:74)
+	at geoserver.Layers.getLayers(Layers.java:46)
+	at controllers.Application.getLayers(Application.java:98)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:548)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:502)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:478)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:473)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:161)
+	... 1 more

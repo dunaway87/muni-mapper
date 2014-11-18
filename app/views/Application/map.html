@@ -112,14 +112,9 @@ $('#layersTab').click(function(){
 });	
 
 
-<<<<<<< HEAD
+
 $.get("/muni/getLayers").done(function(dataSTR){
-=======
 
-
-
-$.get("/getLayers").done(function(dataSTR){
->>>>>>> branch 'master' of https://github.com/dunaway87/muni-mapper.git
 	var data = jQuery.parseJSON(dataSTR);
  	console.log(data);
 	var folderHtml ='';

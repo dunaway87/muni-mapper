@@ -83,7 +83,7 @@ function manageLayer(layername){
 		    	"font-weight":"bold"
 			});
 			if(!dontRemoveLegend){
-				$('#legends').append('<div id="'+layername+'Legend" class="legend"><b>'+layername.replace(/_/g," ")+'</b><span class="glyphicon glyphicon-remove-circle x-glyph" onClick="manageLayer(\''+layername+'\')"></span><span class ="toggle-checkbox" onClick="toggleLayer(\''+layername+'\')"><input id="'+layername+'Toggler" type = "checkbox" checked></span><br><img src="http://www.mountainhouseproject.com/muni-mapper/legend/'+layername+'" alt="some_text"><div>');
+				$('#legends').append('<div id="'+layername+'Legend" class="legend"><b>'+layername.replace(/_/g," ")+'</b><span class="glyphicon glyphicon-remove-circle x-glyph" onClick="manageLayer(\''+layername+'\')"></span><span class ="toggle-checkbox" onClick="toggleLayer(\''+layername+'\')"><input id="'+layername+'Toggler" type = "checkbox" checked></span><br><img src="http://www.mountainhouseproject.com/muni/legend/'+layername+'" alt="some_text"><div>');
 			}
 			addLayerToArray(layername);
 		}

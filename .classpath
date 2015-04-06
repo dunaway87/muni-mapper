@@ -4,27 +4,49 @@
 	<classpathentry kind="src" path="test"/>
 	
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\play-1.2.4.jar" sourcepath="C:/play-1.2.4/play-1.2.4/framework/src" />
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\play-1.2.5.jar" sourcepath="C:/play-1.2.5/framework/src" />
 	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\antlr-runtime-3.3.jar"/>
 	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\aopalliance-1.0.jar"/>
 	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\bcprov-jdk14-1.46.jar"/>
 	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\commons-dbcp-1.3.jar"/>
 	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\commons-digester-1.7.jar"/>
 	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\commons-httpclient-3.1.jar"/>
+	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\commons-jxpath-1.3.jar"/>
 	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\commons-pool-1.5.3.jar"/>
 	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\commons-validator-1.1.4.jar"/>
 	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\ehcache-1.6.2.jar"/>
 	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\freemarker-2.3.18.jar"/>
-	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\geoserver-manager-1.3.0.jar"/>
+	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\geoserver-manager-1.3.0.jar" sourcepath="C:\Users\Jonhmarc\.ivy2\cache\it.geosolutions\geoserver-manager\sources\geoserver-manager-1.3.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\gt-api-8.7.jar"/>
+	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\gt-coverage-8.7.jar"/>
+	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\gt-cql-8.7.jar"/>
+	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\gt-data-8.7.jar"/>
 	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\gt-epsg-hsql-8.7.jar"/>
 	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\gt-geotiff-8.7.jar"/>
 	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\gt-graph-8.7.jar"/>
 	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\gt-image-8.7.jar"/>
 	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\gt-imagemosaic-8.7.jar"/>
+	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\gt-main-8.7.jar"/>
+	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\gt-metadata-8.7.jar"/>
+	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\gt-opengis-8.7.jar"/>
 	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\gt-property-8.7.jar"/>
+	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\gt-referencing-8.7.jar"/>
+	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\gt-render-8.7.jar"/>
+	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\gt-shapefile-8.7.jar"/>
 	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\gt-validation-8.7.jar"/>
+	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\gt-wms-8.7.jar"/>
+	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\gt-xml-8.7.jar"/>
+	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\gt-xsd-core-8.7.jar"/>
+	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\gt-xsd-filter-8.7.jar"/>
+	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\gt-xsd-gml2-8.7.jar"/>
+	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\gt-xsd-gml3-8.7.jar"/>
+	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\gt-xsd-ows-8.7.jar"/>
+	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\gt-xsd-sld-8.7.jar"/>
 	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\hsqldb-1.8.0.7.jar"/>
+	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\imageio-ext-streams-1.1.6.jar"/>
+	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\jai_codec-1.1.3.jar"/>
 	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\jai_core-1.1.3.jar"/>
+	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\jai_imageio-1.1.jar"/>
 	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\jasypt-1.8.jar"/>
 	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\jdom-1.0.jar"/>
 	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\jdom-1.1.jar"/>
@@ -37,11 +59,14 @@
 	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\jt-zonalstats-1.3.0.jar"/>
 	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\jts-1.12.jar"/>
 	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\main-2.2.5.jar"/>
+	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\net.opengis.ows-8.7.jar"/>
+	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\org.w3.xlink-8.7.jar"/>
 	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\oro-2.0.8.jar"/>
 	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\ows-2.2.5.jar"/>
+	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\picocontainer-1.2.jar"/>
 	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\platform-2.2.5.jar"/>
 	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\postgresql-8.4-701.jdbc3.jar"/>
-	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\rest-2.2.5.jar"/>
+	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\rest-2.2.5.jar" sourcepath="C:\Users\Jonhmarc\.ivy2\cache\org.geoserver\rest\sources\rest-2.2.5-sources.jar"/>
 	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\servlet-api-2.5.jar"/>
 	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\spring-aop-3.1.1.RELEASE.jar"/>
 	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\spring-asm-3.1.1.RELEASE.jar"/>
@@ -59,85 +84,78 @@
 	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\spring-web-3.1.1.RELEASE.jar"/>
 	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\spring-webmvc-3.1.1.RELEASE.jar"/>
 	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\stax-api-1.0.1.jar"/>
-	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\stringtemplate-4.0.2.jar"/>
+	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\stringtemplate-4.0.2.jar" sourcepath="C:\Users\Jonhmarc\.ivy2\cache\org.antlr\stringtemplate\sources\stringtemplate-4.0.2-sources.jar"/>
 	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\vecmath-1.3.2.jar"/>
 	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\xercesImpl-2.7.1.jar"/>
 	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\xml-apis-1.3.04.jar"/>
 	<classpathentry kind="lib" path="C:\projects\muni-mapper\lib\xpp3-1.1.3.4.O.jar"/>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\activation-1.1.1.jar"/>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\antlr-2.7.6.jar"/>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\asm-all-3.3.1.jar"/>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\async-http-client-1.6.5.jar"/>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\bcprov-jdk15-1.45.jar"/>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\c3p0-0.9.1.2.jar"/>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\cglib-nodep-2.2.jar"/>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\commons-beanutils-1.8.3.jar"/>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\commons-codec-1.4.jar"/>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\commons-collections-3.2.1.jar"/>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\commons-email-1.2.jar"/>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\commons-fileupload-1.2.2.jar"/>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\commons-io-2.0.1.jar"/>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\commons-javaflow-1066591.jar"/>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\commons-lang-2.6.jar"/>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\commons-logging-1.1.1.jar"/>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\dom4j-1.6.1.jar"/>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\ehcache-core-2.0.0.jar"/>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\ezmorph-1.0.3.jar"/>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\geronimo-servlet_2.5_spec-1.2.jar"/>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\groovy-all-1.7.10.jar"/>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\gson-1.7.1.jar"/>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\h2-1.3.149.jar"/>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\hibernate-commons-annotations-3.2.0.Final.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="http://docs.jboss.org/hibernate/annotations/3.5/api/"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\hibernate-core-3.6.1.Final.jar">
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\activation-1.1.1.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\antlr-2.7.7.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\asm-all-3.3.1.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\async-http-client-1.7.4.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\bcprov-jdk15-1.45.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\c3p0-0.9.1.2.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\cglib-nodep-2.2.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\commons-beanutils-1.8.3.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\commons-codec-1.4.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\commons-collections-3.1.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\commons-email-1.2.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\commons-fileupload-1.2.2.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\commons-io-2.0.1.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\commons-javaflow-1209105.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\commons-lang-2.6.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\ehcache-core-2.4.3.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\ezmorph-1.0.3.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\geronimo-servlet_2.5_spec-1.2.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\groovy-all-1.8.6.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\gson-2.2.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\h2-1.3.166.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\hibernate-commons-annotations-3.2.0.Final.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\hibernate-core-3.6.10.Final.jar">
 		<attributes>
 			<attribute name="javadoc_location" value="http://docs.jboss.org/hibernate/core/3.6/javadocs/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\hibernate-entitymanager-3.6.0.Final.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="http://docs.jboss.org/hibernate/entitymanager/3.6/javadocs/"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\hibernate-jpa-2.0-api-1.0.0.Final.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="http://download.oracle.com/javaee/6/api/"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\ivy-2.2.0.jar"/>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\jamon-2.7.jar"/>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\javassist-3.9.0.GA.jar"/>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\javax.inject-1.0.jar"/>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\jaxen-1.1.jar"/>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\jj-imaging.jar"/>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\jj-simplecaptcha.jar"/>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\jj-textile.jar"/>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\jj-wikitext.jar"/>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\joda-time-2.0.jar"/>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\jregex-1.2_01.jar"/>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\jsr107cache-1.0.jar"/>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\jta-1.1.jar"/>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\junit-4.8.1.jar"/>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\log4j-1.2.16.jar">
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\hibernate-entitymanager-3.6.10.Final.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\hibernate-jpa-2.0-api-1.0.1.Final.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\hibernate-validator-4.1.0.Final.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\ivy-2.2.0.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\jamon-2.7.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\javassist-3.9.0.GA.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\javax.inject-1.0.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\jaxb-api-2.2.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\jaxb-impl-2.1.12.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\jaxen-1.1.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\jboss-transaction-api_1.1_spec-1.0.0.Final.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\jj-imaging.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\jj-simplecaptcha.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\jj-textile.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\jj-wikitext.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\joda-time-2.1.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\jregex-1.2_01.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\jsr107cache-1.0.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\junit-4.10.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\log4j-1.2.16.jar">
 		<attributes>
 			<attribute name="javadoc_location" value="http://logging.apache.org/log4j/1.2/apidocs/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\mail-1.4.3.jar"/>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\memcached-2.6.jar"/>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\mysql-connector-java-5.1.13.jar"/>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\netty-3.2.5.Final.jar"/>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\org.eclipse.jdt.core-3.8.0.v_C03.jar"/>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\oval-1.50.jar"/>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\postgresql-9.0.jar"/>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\signpost-core-1.2.jar"/>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\slf4j-api-1.6.1.jar"/>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\slf4j-log4j12-1.6.1.jar"/>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\snakeyaml-1.7.jar"/>
-	<classpathentry kind="lib" path="C:\play-1.2.4\play-1.2.4\framework\lib\xstream-1.3.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\mail-1.4.3.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\memcached-2.6.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\mysql-connector-java-5.1.20.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\netty-3.4.2.Final.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\org.eclipse.jdt.core-3.7.1.v_B76_R37x.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\oval-1.50.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\postgresql-9.0.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\signpost-core-1.2.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\slf4j-api-1.6.1.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\slf4j-log4j12-1.6.1.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\snakeyaml-1.7.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\validation-api-1.0.0.GA.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\xmlpull-1.1.3.1.jar"/>
+	<classpathentry kind="lib" path="c:\play-1.2.5\framework\lib\xstream-1.4.2.jar"/>
 	
 	<classpathentry kind="output" path="eclipse/classes"/>
 </classpath>
